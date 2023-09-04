@@ -14,6 +14,7 @@ import { FormLabel, Grid } from '@mui/material'
 import { styled, useTheme } from '@mui/material/styles'
 import InputAdornment from '@mui/material/InputAdornment'
 import MuiFormControlLabel from '@mui/material/FormControlLabel'
+import axios from 'axios'
 
 // ** Custom Component Import
 import CustomTextField from 'src/@core/components/mui/text-field'
@@ -49,6 +50,23 @@ const LoginPage = () => {
 
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword })
+  }
+
+  const handleSubmit = () => {
+    try {
+      axios
+        .post(
+          'http://localhost:3001/login',
+          { email: values.email, password: values.password },
+          { headers: { 'Content-Type': 'json' } }
+        )
+        .then(res => {
+          console.log(res, 'res')
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    } catch (error) {}
   }
 
   return (
@@ -104,7 +122,7 @@ const LoginPage = () => {
               </Typography>
             </Box>
 
-            <form noValidate autoComplete='off' style={{ width: '100%' }}>
+            <form noValidate autoComplete='off' style={{ width: '100%' }} onSubmit={handleSubmit}>
               <FormLabel focused required sx={{ fontSize: '14px', fontWeight: 500, lineHeight: '30px' }}>
                 Email
               </FormLabel>
