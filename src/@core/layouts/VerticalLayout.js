@@ -122,7 +122,7 @@ const VerticalLayout = props => {
       {disableCustomizer || hidden ? null : <Customizer />}
 
       {/* Scroll to top button */}
-      {scrollToTop ? (
+      {/* {scrollToTop ? (
         scrollToTop(props)
       ) : (
         <ScrollToTop className='mui-fixed'>
@@ -130,7 +130,7 @@ const VerticalLayout = props => {
             <Icon icon='tabler:arrow-up' />
           </Fab>
         </ScrollToTop>
-      )}
+      )} */}
     </>
   )
 }
