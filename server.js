@@ -4,7 +4,9 @@ const cors = require('cors')
 const { Pool } = require('pg')
 const jwt = require('jsonwebtoken')
 const bodyParser = require('body-parser')
-const app = next({ dev: true })
+const bcrypt = require('bcrypt')
+const dev = true
+const app = next({ dev })
 
 const pool = new Pool({
   user: 'postgres',
@@ -22,9 +24,10 @@ app.prepare().then(() => {
   server.use(bodyParser.urlencoded({ extended: true }))
   server.use(bodyParser.json())
 
+  const userRoles = ['admin', 'evaluator', 'assistant', 'manager', 'investigator']
   //   create user
 
-  server.post('/register', async (req, res) => {
+  server.post('/api/register', async (req, res) => {
     const { name, email, username, phone, password, role } = req.body
     if (!name || !email || !password || !username || !phone || !userRoles.includes(role.toLowerCase())) {
       return res.status(400).json({ message: 'Invalid input data' })
@@ -61,7 +64,7 @@ app.prepare().then(() => {
       return res.status(500).json({ message: 'Server error' })
     }
   })
-  server.post('/login', async (req, res) => {
+  server.post('/api/login', async (req, res) => {
     const { email, password } = req.body
 
     try {
@@ -69,7 +72,7 @@ app.prepare().then(() => {
       const userQuery = await pool.query('SELECT * FROM users WHERE email = $1', [email])
 
       if (userQuery.rows.length === 0) {
-        return res.status(401).json({ message: 'User not found' })
+        return res.status(401).json({ message: req.body })
       }
 
       const user = userQuery.rows[0]
@@ -88,15 +91,36 @@ app.prepare().then(() => {
         { expiresIn: '1h' }
       )
 
-      return res.status(200).json({ message: 'Login successful', token })
+      return res.status(200).json({
+        message: 'Login successful',
+        accessToken: token,
+        userData: {
+          username: user?.username || '',
+          email: user?.email,
+          role: userRoles.includes(user?.role)
+        }
+      })
     } catch (error) {
       console.error('Error logging in:', error)
       return res.status(500).json({ message: 'Server error' })
     }
   })
 
-  server.listen(3000, err => {
+  server.get('/api/test', async (req, res) => {
+    try {
+      // Simulate some server logic
+      // You can replace this with your actual logic
+      const responseData = { message: 'hello from server' }
+
+      return res.status(200).json(responseData)
+    } catch (error) {
+      console.error('Error:', error)
+      return res.status(500).json({ message: 'Server error' })
+    }
+  })
+
+  server.listen(3001, err => {
     if (err) throw err
-    console.log('Server is running on http://localhost:3000')
+    console.log('Server is running on http://localhost:3001')
   })
 })

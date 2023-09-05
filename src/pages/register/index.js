@@ -14,12 +14,19 @@ import { FormLabel, Grid, MenuItem } from '@mui/material'
 import { styled, useTheme } from '@mui/material/styles'
 import InputAdornment from '@mui/material/InputAdornment'
 import MuiFormControlLabel from '@mui/material/FormControlLabel'
+import axios from 'axios'
 
 // ** Custom Component Import
 import CustomTextField from 'src/@core/components/mui/text-field'
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
+
+// ** Third Party Imports
+import * as yup from 'yup'
+import { useAuth } from 'src/hooks/useAuth'
+import { useForm, Controller } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 // ** Layout Import
 import BlankLayout from 'src/@core/layouts/BlankLayout'
@@ -33,7 +40,16 @@ const FormControlLabel = styled(MuiFormControlLabel)(({ theme }) => ({
   }
 }))
 
-const LoginPage = () => {
+const schema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().min(5).required(),
+  phone: yup.number().min(10).required()
+})
+
+const RegisterPage = () => {
+  // ** States
+  const [showPassword, setShowPassword] = useState(false)
+
   // ** Hook
 
   const theme = useTheme()
@@ -43,12 +59,52 @@ const LoginPage = () => {
     showPassword: false
   })
 
+  const {
+    control,
+    setError,
+    handleSubmit,
+    formState: { errors }
+  } = useForm({
+    mode: 'onBlur',
+    resolver: yupResolver(schema)
+  })
+
   const handleChange = prop => event => {
     setValues({ ...values, [prop]: event.target.value })
   }
 
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword })
+  }
+  const handleSubmitRegister = async e => {
+    e.preventDefault()
+    console.log(values, 'values register')
+
+    // debugger
+    try {
+      const response = await axios
+        .post(
+          'http://localhost:3001/api/register',
+          {
+            name: values?.name,
+            email: values?.email,
+            username: values?.username,
+            password: values?.password,
+            phone: values?.phone,
+            role: values?.role
+          },
+          {
+            headers: {
+              'Content-Type': 'application/json' // Add this header,
+            }
+          }
+        )
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+      console.log(response.data.message) // Access the response data
+    } catch (error) {
+      console.error('Error:', error)
+    }
   }
 
   return (
@@ -104,93 +160,143 @@ const LoginPage = () => {
               </Typography>
             </Box>
 
-            <form noValidate autoComplete='off' style={{ width: '100%' }}>
+            <form noValidate autoComplete='off' style={{ width: '100%' }} onSubmit={handleSubmitRegister}>
               <FormLabel focused sx={{ fontSize: '14px', fontWeight: 500, lineHeight: '30px' }}>
                 Name
               </FormLabel>
-              <CustomTextField
-                autoFocus
-                hiddenLabel
-                fullWidth
-                id='username'
-                sx={{ mb: 4 }}
-                // placeholder='Enter your email'
+              <Controller
+                name='name'
+                control={control}
+                rules={{ required: true }}
+                render={({ field: { value, onChange, onBlur } }) => (
+                  <CustomTextField
+                    autoFocus
+                    hiddenLabel
+                    fullWidth
+                    id='name'
+                    onBlur={onBlur}
+                    onChange={onChange}
+                    sx={{ mb: 4 }}
+                    // placeholder='Enter your email'
+                  />
+                )}
               />
               <FormLabel focused sx={{ fontSize: '14px', fontWeight: 500, lineHeight: '30px' }}>
                 Username
               </FormLabel>
-              <CustomTextField
-                autoFocus
-                hiddenLabel
-                fullWidth
-                id='username'
-                sx={{ mb: 4 }}
-                // placeholder='Enter your email'
+              <Controller
+                name='username'
+                control={control}
+                rules={{ required: true }}
+                render={({ field: { value, onChange, onBlur } }) => (
+                  <CustomTextField
+                    autoFocus
+                    hiddenLabel
+                    fullWidth
+                    value={value}
+                    id='username'
+                    onBlur={onBlur}
+                    onChange={onChange}
+                    sx={{ mb: 4 }}
+                    // placeholder='Enter your email'
+                  />
+                )}
               />
               <FormLabel focused sx={{ fontSize: '14px', fontWeight: 500, lineHeight: '30px' }}>
                 Email
               </FormLabel>
-              <CustomTextField
-                autoFocus
-                hiddenLabel
-                fullWidth
-                id='email'
-                sx={{ mb: 4 }}
-                placeholder='Enter your email'
+              <Controller
+                name='email'
+                control={control}
+                rules={{ required: true }}
+                render={({ field: { value, onChange, onBlur } }) => (
+                  <CustomTextField
+                    autoFocus
+                    hiddenLabel
+                    fullWidth
+                    id='email'
+                    value={value}
+                    onBlur={onBlur}
+                    onChange={onChange}
+                    sx={{ mb: 4 }}
+                    placeholder='Enter your email'
+                  />
+                )}
               />
               <FormLabel focused sx={{ fontSize: '14px', fontWeight: 500, lineHeight: '30px' }}>
                 Password
               </FormLabel>
-              <CustomTextField
-                fullWidth
-                sx={{ mb: 1.5 }}
-                // label='Password'
-                value={values.password}
-                id='auth-login-password'
-                placeholder='············'
-                onChange={handleChange('password')}
-                type={values.showPassword ? 'text' : 'password'}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position='end'>
-                      <IconButton
-                        edge='end'
-                        onClick={handleClickShowPassword}
-                        onMouseDown={e => e.preventDefault()}
-                        aria-label='toggle password visibility'
-                      >
-                        <Icon fontSize='1.25rem' icon={values.showPassword ? 'tabler:eye' : 'tabler:eye-off'} />
-                      </IconButton>
-                    </InputAdornment>
-                  )
-                }}
+              <Controller
+                name='password'
+                control={control}
+                rules={{ required: true }}
+                render={({ field: { value, onChange, onBlur } }) => (
+                  <CustomTextField
+                    fullWidth
+                    sx={{ mb: 1.5 }}
+                    // label='Password'
+                    value={value}
+                    id='auth-login-password'
+                    placeholder='············'
+                    onBlur={onBlur}
+                    onChange={onChange}
+                    error={Boolean(errors.password)}
+                    {...(errors.password && { helperText: errors.password.message })}
+                    type={showPassword ? 'text' : 'password'}
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position='end'>
+                          <IconButton
+                            edge='end'
+                            onMouseDown={e => e.preventDefault()}
+                            onClick={() => setShowPassword(!showPassword)}
+                            aria-label='toggle password visibility'
+                          >
+                            <Icon fontSize='1.25rem' icon={values.showPassword ? 'tabler:eye' : 'tabler:eye-off'} />
+                          </IconButton>
+                        </InputAdornment>
+                      )
+                    }}
+                  />
+                )}
               />
               <FormLabel focused sx={{ fontSize: '14px', fontWeight: 500, lineHeight: '30px' }}>
                 Phone Number
               </FormLabel>
-              <CustomTextField
-                autoFocus
-                hiddenLabel
-                fullWidth
-                type='number'
-                sx={{ mb: 4 }}
-                id='phone-number'
-                placeholder='202 555 0111'
-                InputProps={{
-                  startAdornment: <InputAdornment position='start'>+1</InputAdornment>
-                }}
+              <Controller
+                name='phone'
+                control={control}
+                rules={{ required: true }}
+                render={({ field: { value, onChange, onBlur } }) => (
+                  <CustomTextField
+                    autoFocus
+                    hiddenLabel
+                    fullWidth
+                    value={value}
+                    type='number'
+                    sx={{ mb: 4 }}
+                    id='phone'
+                    onBlur={onBlur}
+                    onChange={onChange}
+                    placeholder='202 555 0111'
+                    InputProps={{
+                      startAdornment: <InputAdornment position='start'>+1</InputAdornment>
+                    }}
+                  />
+                )}
               />
               <FormLabel focused sx={{ fontSize: '14px', fontWeight: 500, lineHeight: '30px' }}>
                 Select Role
               </FormLabel>
-              <CustomTextField select defaultValue='' fullWidth id='custom-select'>
+              <CustomTextField onChange={handleChange('role')} select defaultValue='' fullWidth id='custom-select'>
                 {/* <MenuItem value=''>
                   <em>None</em>
                 </MenuItem> */}
-                <MenuItem value={'student'}>Student</MenuItem>
-                <MenuItem value={'examiner'}>Examiner</MenuItem>
-                <MenuItem value={'teacher'}>Teacher</MenuItem>
-                <MenuItem value={'investigator'}>Investigater</MenuItem>
+                <MenuItem value={'admin'}>Admin</MenuItem>
+                <MenuItem value={'evaluator'}>Evaluator</MenuItem>
+                <MenuItem value={'assistant'}>Assistant</MenuItem>
+                <MenuItem value={'investigator'}>Investigator</MenuItem>
+                <MenuItem value={'manager'}>Manager</MenuItem>
               </CustomTextField>
               <Box
                 sx={{
@@ -237,7 +343,7 @@ const LoginPage = () => {
     </Grid>
   )
 }
-LoginPage.getLayout = page => <BlankLayout>{page}</BlankLayout>
-LoginPage.guestGuard = false
+RegisterPage.getLayout = page => <BlankLayout>{page}</BlankLayout>
+RegisterPage.guestGuard = false
 
-export default LoginPage
+export default RegisterPage
