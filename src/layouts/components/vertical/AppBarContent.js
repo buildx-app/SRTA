@@ -34,6 +34,27 @@ const notifications = [
     subtitle: '5 hours ago',
     avatarText: 'Robert Austin',
     title: 'New user registered.'
+  },
+  {
+    meta: '11 Aug',
+    avatarAlt: 'message',
+    title: 'New message received 👋🏻',
+    avatarImg: '/images/avatars/5.png',
+    subtitle: 'You have 10 unread messages'
+  },
+  {
+    meta: '25 May',
+    title: 'Paypal',
+    avatarAlt: 'paypal',
+    subtitle: 'Received Payment',
+    avatarImg: '/images/misc/paypal.png'
+  },
+  {
+    meta: '19 Mar',
+    avatarAlt: 'order',
+    title: 'Received Order 📦',
+    avatarImg: '/images/avatars/3.png',
+    subtitle: 'New order received from John'
   }
 ]
 
