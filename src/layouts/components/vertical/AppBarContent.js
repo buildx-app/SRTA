@@ -2,6 +2,7 @@
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import { Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
@@ -16,6 +17,7 @@ import ShortcutsDropdown from 'src/@core/layouts/components/shared-components/Sh
 
 // ** Hook Import
 import { useAuth } from 'src/hooks/useAuth'
+import IconifyIcon from 'src/@core/components/icon'
 import IconifyIcon from 'src/@core/components/icon'
 
 const notifications = [
@@ -32,27 +34,6 @@ const notifications = [
     subtitle: '5 hours ago',
     avatarText: 'Robert Austin',
     title: 'New user registered.'
-  },
-  {
-    meta: '11 Aug',
-    avatarAlt: 'message',
-    title: 'New message received 👋🏻',
-    avatarImg: '/images/avatars/5.png',
-    subtitle: 'You have 10 unread messages'
-  },
-  {
-    meta: '25 May',
-    title: 'Paypal',
-    avatarAlt: 'paypal',
-    subtitle: 'Received Payment',
-    avatarImg: '/images/misc/paypal.png'
-  },
-  {
-    meta: '19 Mar',
-    avatarAlt: 'order',
-    title: 'Received Order 📦',
-    avatarImg: '/images/avatars/3.png',
-    subtitle: 'New order received from John'
   }
 ]
 
@@ -123,14 +104,16 @@ const AppBarContent = props => {
           </IconButton>
         ) : null}
         {/* {auth.user && <Autocomplete hidden={hidden} settings={settings} />} */}
-        <Autocomplete hidden={hidden} settings={settings} />
+        <Typography sx={{ fontSize: '30px', fontWeight: 700 }}>Dashboard</Typography>
       </Box>
       <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center' }}>
-        <LanguageDropdown settings={settings} saveSettings={saveSettings} />
-        <ModeToggler settings={settings} saveSettings={saveSettings} />
+        {/* <LanguageDropdown settings={settings} saveSettings={saveSettings} />
+        <ModeToggler settings={settings} saveSettings={saveSettings} /> */}
         {/* {auth.user && ( */}
         <>
-          <ShortcutsDropdown settings={settings} shortcuts={shortcuts} />
+          {/* <ShortcutsDropdown settings={settings} shortcuts={shortcuts} /> */}
+          <IconifyIcon icon={'tabler:search'} fontSize='25px' />
+
           <NotificationDropdown settings={settings} notifications={notifications} />
           <UserDropdown settings={settings} />
         </>
