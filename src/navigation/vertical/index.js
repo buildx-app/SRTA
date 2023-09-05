@@ -6,11 +6,7 @@ const navigation = () => {
       path: '/dashboard'
     },
 
-
     {
-      title: 'Users',
-      icon: 'basil:user-outline',
-      path: '/users'
       title: 'Users',
       icon: 'basil:user-outline',
       path: '/users'
@@ -19,14 +15,8 @@ const navigation = () => {
       title: 'Exams',
       icon: 'healthicons:i-exam-multiple-choice-outline',
       path: '/exams'
-      title: 'Exams',
-      icon: 'healthicons:i-exam-multiple-choice-outline',
-      path: '/exams'
     },
     {
-      title: 'Questionnaires',
-      icon: 'wpf:ask-question',
-      path: '/questionnaires'
       title: 'Questionnaires',
       icon: 'wpf:ask-question',
       path: '/questionnaires'
@@ -35,21 +25,15 @@ const navigation = () => {
       title: 'Lookups',
       icon: 'tabler:search',
       path: '/lookups'
-      title: 'Lookups',
-      icon: 'tabler:search',
-      path: '/lookups'
     },
     {
-      title: 'Procedures',
       title: 'Procedures',
       icon: 'tabler:settings',
-      path: '/procedures'
       path: '/procedures'
     },
     {
       title: 'Sections',
       icon: 'tabler:chart-pie',
-      path: '/sections'
       path: '/sections'
     },
     {
