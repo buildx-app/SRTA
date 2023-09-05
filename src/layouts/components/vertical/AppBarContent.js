@@ -32,27 +32,6 @@ const notifications = [
     subtitle: '5 hours ago',
     avatarText: 'Robert Austin',
     title: 'New user registered.'
-  },
-  {
-    meta: '11 Aug',
-    avatarAlt: 'message',
-    title: 'New message received 👋🏻',
-    avatarImg: '/images/avatars/5.png',
-    subtitle: 'You have 10 unread messages'
-  },
-  {
-    meta: '25 May',
-    title: 'Paypal',
-    avatarAlt: 'paypal',
-    subtitle: 'Received Payment',
-    avatarImg: '/images/misc/paypal.png'
-  },
-  {
-    meta: '19 Mar',
-    avatarAlt: 'order',
-    title: 'Received Order 📦',
-    avatarImg: '/images/avatars/3.png',
-    subtitle: 'New order received from John'
   }
 ]
 
@@ -122,14 +101,16 @@ const AppBarContent = props => {
             <Icon fontSize='1.5rem' icon='tabler:menu-2' />
           </IconButton>
         ) : null}
-        {/* {auth.user && <Autocomplete hidden={hidden} settings={settings} />} */}
+        {/* {auth.user && <Autocomplete hidden={hidden} settings={settings} />} */}        
         <Typography sx={{ fontSize: '30px', fontWeight: 700 }}>Dashboard</Typography>
       </Box>
       <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center' }}>
         {/* <LanguageDropdown settings={settings} saveSettings={saveSettings} />
         <ModeToggler settings={settings} saveSettings={saveSettings} /> */}
+        {/* <LanguageDropdown settings={settings} saveSettings={saveSettings} />
+        <ModeToggler settings={settings} saveSettings={saveSettings} /> */}
         {/* {auth.user && ( */}
-        <>
+        <>        
           {/* <ShortcutsDropdown settings={settings} shortcuts={shortcuts} /> */}
           <IconifyIcon icon={'tabler:search'} fontSize='25px' />
 
