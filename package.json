@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node server.js",
     "export": "next export",
     "lint": "eslint --fix \"src/**/*.{js,jsx}\"",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
@@ -40,6 +40,7 @@
     "axios": "1.4.0",
     "axios-mock-adapter": "1.21.4",
     "babel-eslint": "10.1.0",
+    "body-parser": "^1.20.2",
     "bootstrap-icons": "1.10.5",
     "chart.js": "4.3.0",
     "cleave.js": "1.6.0",

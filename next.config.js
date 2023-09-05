@@ -11,6 +11,7 @@ module.exports = {
   },
   trailingSlash: true,
   reactStrictMode: false,
+  useFileSystemPublicRoutes: false,
   webpack: config => {
     config.resolve.alias = {
       ...config.resolve.alias,
