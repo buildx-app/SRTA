@@ -346,7 +346,6 @@ const navigation = () => {
       icon: 'tabler:brand-tabler'
     },
     {
-      
       title: 'Cards',
       icon: 'tabler:id',
       children: [
@@ -457,7 +456,7 @@ const navigation = () => {
         {
           title: 'More',
           path: '/components/more'
-        },
+        }
       ]
     },
     {
@@ -518,7 +517,7 @@ const navigation = () => {
         {
           title: 'Input Mask',
           path: '/forms/form-elements/input-mask'
-        },
+        }
       ]
     },
     {
@@ -569,8 +568,8 @@ const navigation = () => {
     },
     {
       path: '/acl',
-      action: 'read',
-      subject: 'acl-page',
+      // action: 'read',
+      // subject: 'acl-page',
       icon: 'tabler:shield',
       title: 'Access Control'
     },
