@@ -54,7 +54,7 @@ const ForgotPasswordPage = () => {
         <Box>
           <Box sx={{ maxWidth: 441, width: '100%', height: 'auto', overflow: 'hidden', m: '0px auto' }}>
             <img
-              src='/images-srpa/logo.png'
+              src='/images-srpa/logo.svg'
               alt='user-img'
               style={{ width: '100%', height: '100%', objectFit: 'fill' }}
             />{' '}
