@@ -4,22 +4,6 @@ const navigation = () => {
       title: 'Dashboard',
       icon: 'tabler:layout-dashboard',
       path: '/dashboard'
-      // badgeContent: 'new',
-      // badgeColor: 'error',
-      // children: [
-      //   {
-      //     title: 'Analytics',
-      //     path: '/dashboards/analytics'
-      //   },
-      //   {
-      //     title: 'CRM',
-      //     path: '/dashboards/crm'
-      //   },
-      //   {
-      //     title: 'eCommerce',
-      //     path: '/dashboards/ecommerce'
-      //   }
-      // ]
     },
 
 
