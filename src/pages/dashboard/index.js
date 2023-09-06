@@ -246,8 +246,6 @@ function index() {
           </Grid>
         </Grid>
       </Grid>
-
-         
     </>
   )
 }
