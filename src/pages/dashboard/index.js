@@ -3,11 +3,13 @@ import { Card, CardContent, Avatar, Box, Typography, Grid } from '@mui/material'
 import { deepOrange } from '@mui/material/colors'
 import StudentTable from 'src/views/dashboard/StudentTable'
 import ExamsTable from 'src/views/dashboard/ExamsTable'
+import TotalStudentChart from 'src/views/dashboard/TotalStudentChart'
+import EarningAreaChart from 'src/views/dashboard/EarningAreaChart'
 
 function index() {
   return (
     <>
-      <Grid container spacing={2}>
+      <Grid container spacing={6}>
         <Grid item xs={12} sm={6} lg={3}>
           <Card
             className='card'
@@ -22,7 +24,7 @@ function index() {
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                padding: '16px'
+                padding: '20px !important'
               }}
             >
               <Avatar
@@ -45,15 +47,19 @@ function index() {
                 }}
               >
                 <Typography
-                  variant='h6'
-                  className='card-text'
                   sx={{
+                    fontSize: '18px',
                     lineHeight: '28px'
                   }}
                 >
                   Number of Students
                 </Typography>
-                <Typography variant='h6' className='card-text'>
+                <Typography
+                  sx={{
+                    fontWeight: 700,
+                    lineHeight: '28px'
+                  }}
+                >
                   2468
                 </Typography>
               </Box>
@@ -62,7 +68,6 @@ function index() {
         </Grid>
         <Grid item xs={12} sm={6} lg={3}>
           <Card
-            className='card'
             style={{
               backgroundColor: '#D8EAD1',
               border: '0px'
@@ -74,7 +79,7 @@ function index() {
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                padding: '16px'
+                padding: '20px !important'
               }}
             >
               <Avatar
@@ -103,7 +108,7 @@ function index() {
                     lineHeight: '28px'
                   }}
                 >
-                  Number of Students
+                  Number of Teacher
                 </Typography>
                 <Typography variant='h6' className='card-text'>
                   2468
@@ -126,7 +131,7 @@ function index() {
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                padding: '16px'
+                padding: '20px !important'
               }}
             >
               <Avatar
@@ -155,7 +160,7 @@ function index() {
                     lineHeight: '28px'
                   }}
                 >
-                  Number of Students
+                  Number of Employee
                 </Typography>
                 <Typography variant='h6' className='card-text'>
                   2468
@@ -178,7 +183,7 @@ function index() {
               sx={{
                 display: 'flex',
                 alignItems: 'center',
-                padding: '16px'
+                padding: '20px !important'
               }}
             >
               <Avatar
@@ -207,7 +212,7 @@ function index() {
                     lineHeight: '28px'
                   }}
                 >
-                  Number of Students
+                  Number of Revenue
                 </Typography>
                 <Typography variant='h6' className='card-text'>
                   2468
@@ -216,13 +221,30 @@ function index() {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item lg={8}>
-          <StudentTable />
-        </Grid>
-      </Grid>
 
-      <Grid item xs={8}>
-        <ExamsTable />
+        <Grid item xs={12}>
+          <Typography sx={{ fontSize: '24px', fontWeight: 700, marginBottom: '20px' }}>Students</Typography>
+          <Grid container spacing={4}>
+            <Grid item xs={12} lg={4}>
+              <TotalStudentChart />
+            </Grid>
+            <Grid item xs={12} lg={8}>
+              <StudentTable />
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography sx={{ fontSize: '24px', fontWeight: 700, marginBottom: '20px' }}>Exams</Typography>
+
+          <Grid container spacing={4}>
+            <Grid item xs={12} lg={8}>
+              <ExamsTable />
+            </Grid>
+            <Grid item xs={12} lg={4}>
+              <EarningAreaChart />
+            </Grid>
+          </Grid>
+        </Grid>
       </Grid>
     </>
   )
