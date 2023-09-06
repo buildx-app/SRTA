@@ -15,11 +15,11 @@ const pool = new Pool({
   // password: '12345',
   // port: 5432 // Change to your PostgreSQL port if necessary
 
-  user: 'maulikd',
-  host: 'ep-aged-darkness-00061604.us-east-2.aws.neon.tech',
-  database: 'SRTA',
-  password: 'PmRxLZ81unAa',
-  port: 5432,
+  user: `${process.env.POSTGRES_USER}`,
+  host: `${process.env.POSTGRES_HOST}`,
+  database: `${process.env.POSTGRES_DATABASE}`,
+  password: `${process.env.POSTGRES_PASSWORD}`,
+  port: process.env.POSTGRES_PORT,
   ssl: true
 })
 

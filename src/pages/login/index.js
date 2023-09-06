@@ -57,10 +57,6 @@ const LoginPage = () => {
   const theme = useTheme()
   const [rememberMe, setRememberMe] = useState(true)
   const [showPassword, setShowPassword] = useState(false)
-  const [values, setValues] = useState({
-    password: '',
-    showPassword: false
-  })
 
   const {
     control,
@@ -68,6 +64,7 @@ const LoginPage = () => {
     handleSubmit,
     formState: { errors }
   } = useForm({
+    defaultValues,
     mode: 'onBlur',
     resolver: yupResolver(schema)
   })
@@ -149,13 +146,11 @@ const LoginPage = () => {
                     hiddenLabel
                     fullWidth
                     value={value}
-                    id='email'
                     onBlur={onBlur}
                     onChange={onChange}
                     sx={{ mb: 4 }}
                     error={Boolean(errors.email)}
                     placeholder='Enter your email'
-                    required
                     {...(errors.email && { helperText: errors.email.message })}
                   />
                 )}
@@ -173,7 +168,6 @@ const LoginPage = () => {
                     sx={{ mb: 1.5 }}
                     // label='Password'
                     value={value}
-                    id='password'
                     placeholder='············'
                     onBlur={onBlur}
                     onChange={onChange}
@@ -207,7 +201,11 @@ const LoginPage = () => {
                   color: '#9F9F9F'
                 }}
               >
-                <FormControlLabel control={<Checkbox />} color={theme.palette.text.secondary} label='Remember Me' />
+                <FormControlLabel
+                  control={<Checkbox checked={rememberMe} onChange={e => setRememberMe(e.target.checked)} />}
+                  color={theme.palette.text.secondary}
+                  label='Remember Me'
+                />
                 <Link
                   href='/forgot-password'
                   style={{
@@ -228,7 +226,7 @@ const LoginPage = () => {
                 Login
               </Button>
               <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
-                <Typography sx={{ color: 'text.secondary', mr: 2 }}>Don’t have an account?</Typography>
+                {/* <Typography sx={{ color: 'text.secondary', mr: 2 }}>Don’t have an account?</Typography> */}
                 <Link
                   href='/register'
                   style={{

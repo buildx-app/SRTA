@@ -16,10 +16,7 @@ const AuthGuard = props => {
       if (!router.isReady) {
         return
       }
-      if (!window.localStorage.getItem('userData')) {
-        // if (router.asPath === '/register') {
-        //   router.replace('/register')
-        // }
+      if (auth.user === null && !window.localStorage.getItem('userData')) {
         if (router.asPath !== '/') {
           router.replace({
             pathname: '/login',
