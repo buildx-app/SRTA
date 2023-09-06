@@ -29,7 +29,7 @@ const DefaultPalette = (mode, skin) => {
       bodyBg: mode === 'light' ? '#FBFBFB' : '#25293C',
       trackBg: mode === 'light' ? '#F1F0F2' : '#363B54',
       avatarBg: mode === 'light' ? '#DBDADE' : '#4A5072',
-      tableHeaderBg: mode === 'light' ? '#F6F6F7' : '#4A5072'
+      tableHeaderBg: mode === 'light' ? '#F8FAFE' : '#4A5072'
     },
     mode: mode,
     common: {
