@@ -4,6 +4,7 @@ const DataGrid = () => {
       styleOverrides: {
         root: ({ theme }) => ({
           border: '1px solid #DDD',
+          border: '1px solid #DDD',
           color: theme.palette.text.primary,
           '& .MuiDataGrid-columnHeader:focus, & .MuiDataGrid-columnHeader:focus-within': {
             outline: 'none'
@@ -53,6 +54,8 @@ const DataGrid = () => {
           }
         },
         cell: ({ theme }) => ({
+          // borderColor: theme.palette.divider,
+          borderColor: '#F3F3F3',
           // borderColor: theme.palette.divider,
           borderColor: '#F3F3F3',
           '&:not(.MuiDataGrid-cellCheckbox)': {
