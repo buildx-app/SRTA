@@ -247,8 +247,15 @@ function index() {
         </Grid>
       </Grid>
 
-      <Grid item xs={8}>
-        <ExamsTable />
+          <Grid container spacing={4}>
+            <Grid item xs={12} lg={8}>
+              <ExamsTable />
+            </Grid>
+            <Grid item xs={12} lg={4}>
+              <EarningAreaChart />
+            </Grid>
+          </Grid>
+        </Grid>
       </Grid>
     </>
   )
