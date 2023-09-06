@@ -130,8 +130,11 @@ const rows = [
 function ExamsTable() {
   return (
     <>
-      <Box sx={{ height: '100%' }}>
-        <TableBasic columns={columns} rows={rows} hideFooter />
+      <Box sx={{ pt: 5, pb: 5 }}>
+        <Typography variant='h6'>Exams</Typography>
+      </Box>
+      <Box sx={{ height: 550 }}>
+        <TableBasic columns={columns} rows={rows} />
       </Box>
     </>
   )
