@@ -115,8 +115,11 @@ const rows = [
 function StudentTable() {
   return (
     <>
-      <Box sx={{ height: '100%' }}>
-        <TableBasic rowHeight={63} columns={columns} rows={rows} hideFooter />
+      <Box sx={{ pt: 5, pb: 5 }}>
+        <Typography variant='h6'>Students</Typography>
+      </Box>
+      <Box sx={{ height: 550 }}>
+        <TableBasic columns={columns} rows={rows} />
       </Box>
     </>
   )
