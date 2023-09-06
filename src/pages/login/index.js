@@ -46,8 +46,8 @@ const schema = yup.object().shape({
 })
 
 const defaultValues = {
-  password: 'admin',
-  email: 'admin@vuexy.com'
+  password: '',
+  email: ''
 }
 
 const LoginPage = () => {
@@ -68,7 +68,6 @@ const LoginPage = () => {
     handleSubmit,
     formState: { errors }
   } = useForm({
-    defaultValues,
     mode: 'onBlur',
     resolver: yupResolver(schema)
   })
@@ -81,26 +80,6 @@ const LoginPage = () => {
         message: 'Email or Password is invalid'
       })
     })
-  }
-  const handleSubmitLogin = async e => {
-    e.preventDefault()
-    try {
-      const response = await axios
-        .post(
-          'http://localhost:3001/api/login',
-          { email: values?.email, password: values?.password },
-          {
-            headers: {
-              'Content-Type': 'application/json' // Add this header,
-            }
-          }
-        )
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
-      console.log(response.data.message) // Access the response data
-    } catch (error) {
-      console.error('Error:', error)
-    }
   }
 
   return (
@@ -194,7 +173,7 @@ const LoginPage = () => {
                     sx={{ mb: 1.5 }}
                     // label='Password'
                     value={value}
-                    id='auth-login-password'
+                    id='password'
                     placeholder='············'
                     onBlur={onBlur}
                     onChange={onChange}

@@ -9,11 +9,18 @@ const dev = true
 const app = next({ dev })
 
 const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'spra',
-  password: '12345',
-  port: 5432 // Change to your PostgreSQL port if necessary
+  // user: 'postgres',
+  // host: 'localhost',
+  // database: 'spra',
+  // password: '12345',
+  // port: 5432 // Change to your PostgreSQL port if necessary
+
+  user: 'maulikd',
+  host: 'ep-aged-darkness-00061604.us-east-2.aws.neon.tech',
+  database: 'SRTA',
+  password: 'PmRxLZ81unAa',
+  port: 5432,
+  ssl: true
 })
 
 app.prepare().then(() => {
@@ -91,13 +98,17 @@ app.prepare().then(() => {
         { expiresIn: '1h' }
       )
 
+      // Get the role name based on the role_id from the "roles" table
+      const roleQuery = await pool.query('SELECT role_name FROM roles WHERE role_id = $1', [user?.role_id])
+      const userRole = roleQuery.rows[0].role_name
+
       return res.status(200).json({
         message: 'Login successful',
         accessToken: token,
         userData: {
           username: user?.username || '',
           email: user?.email,
-          role: userRoles.includes(user?.role)
+          role: userRole
         }
       })
     } catch (error) {

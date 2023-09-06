@@ -68,8 +68,27 @@ const AuthProvider = ({ children }) => {
         params.rememberMe
           ? window.localStorage.setItem(authConfig.storageTokenKeyName, response.data.accessToken)
           : null
-        const returnUrl = router.query.returnUrl
+        const returnUrl = '/'
         setUser({ ...response.data.userData })
+        console.log(user, 'user')
+        params.rememberMe ? window.localStorage.setItem('userData', JSON.stringify(response.data.userData)) : null
+        const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : '/'
+        router.replace(redirectURL)
+      })
+      .catch(err => {
+        if (errorCallback) errorCallback(err)
+      })
+  }
+
+  const handleRegister = (params, errorCallback) => {
+    axios
+      .post(authConfig.registerEndpoint, params)
+      .then(async response => {
+        params.rememberMe
+          ? window.localStorage.setItem(authConfig.storageTokenKeyName, response.data.accessToken)
+          : null
+        const returnUrl = '/login'
+        // setUser({ ...response.data.userData })
         params.rememberMe ? window.localStorage.setItem('userData', JSON.stringify(response.data.userData)) : null
         const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : '/'
         router.replace(redirectURL)
@@ -92,7 +111,8 @@ const AuthProvider = ({ children }) => {
     setUser,
     setLoading,
     login: handleLogin,
-    logout: handleLogout
+    logout: handleLogout,
+    register: handleRegister
   }
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>
