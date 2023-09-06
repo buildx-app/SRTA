@@ -2,7 +2,6 @@
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import { Typography } from '@mui/material'
-import { Typography } from '@mui/material'
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
@@ -17,7 +16,6 @@ import ShortcutsDropdown from 'src/@core/layouts/components/shared-components/Sh
 
 // ** Hook Import
 import { useAuth } from 'src/hooks/useAuth'
-import IconifyIcon from 'src/@core/components/icon'
 import IconifyIcon from 'src/@core/components/icon'
 
 const notifications = [
