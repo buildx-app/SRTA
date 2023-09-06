@@ -39,7 +39,8 @@ const DataGrid = () => {
           fontWeight: 500,
           letterSpacing: '1px',
           textTransform: 'capitalize',
-          fontSize: theme.typography.body2.fontSize
+          fontSize: '18px',
+          fontWeight: 600
         }),
         columnSeparator: ({ theme }) => ({
           color: theme.palette.divider

@@ -247,9 +247,7 @@ function index() {
         </Grid>
       </Grid>
 
-      <Grid item xs={8}>
-        <ExamsTable />
-      </Grid>
+         
     </>
   )
 }
