@@ -14,28 +14,17 @@ const series = [205, 170]
 export default function TotalStudentChart() {
   const theme = useTheme()
 
-  const legendFormatter = val => {
-    return (
-      <>
-        {/* <Box sx={{ background: 'red' }}></Box> */}
-        <Typography>{val}</Typography>cdc
-      </>
-    )
-  }
-
   const options = {
     colors: [
       //   theme.palette.success.main,
-      hexToRGBA(theme.palette.primary.main, 0.7),
-      hexToRGBA(theme.palette.customColors.secondary, 0.7)
+      hexToRGBA(theme.palette.primary.main, 0.4),
+      hexToRGBA(theme.palette.customColors.secondary, 0.4)
     ],
     stroke: { width: 0 },
     legend: {
       position: 'bottom',
-      //   formatter: legendFormatter,
       formatter: val => `${val}`,
       fontSize: '18px',
-      //   horizontalAlign: 'center',
       markers: { offsetX: -3 },
       labels: { colors: theme.palette.text.secondary },
       itemMargin: {
@@ -47,11 +36,10 @@ export default function TotalStudentChart() {
       }
     },
     tooltip: { enabled: false },
-    // dataLabels: { enabled: false },
-    dataLabels: {
-      enabled: false,
-      formatter: val => `${parseInt(val, 10)}%`
-    },
+    // dataLabels: {
+    //   enabled: false,
+    //   formatter: val => `${parseInt(val, 10)}%`
+    // },
     labels: ['Boys', 'Girls'],
     states: {
       hover: {
@@ -104,13 +92,13 @@ export default function TotalStudentChart() {
       {
         breakpoint: theme.breakpoints.values.lg,
         options: {
-          chart: { height: 249 }
+          chart: { height: 300 }
         }
       },
       {
         breakpoint: theme.breakpoints.values.md,
         options: {
-          chart: { height: 199 }
+          chart: { height: 250 }
         }
       }
     ]
@@ -149,7 +137,7 @@ export default function TotalStudentChart() {
           title={<Typography sx={{ fontSize: 20, fontWeight: 700 }}>Total Students</Typography>}
         />
         <CardContent>
-          <ReactApexcharts type='donut' height={313} series={series} options={options} />
+          <ReactApexcharts type='donut' height={280} series={series} options={options} />
         </CardContent>
       </Card>
     </>
