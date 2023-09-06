@@ -26,21 +26,21 @@ import { handleURLQueries } from 'src/@core/layouts/utils'
 // ** Styled Components
 const MenuNavLink = styled(ListItemButton)(({ theme }) => ({
   width: '100%',
-  marginLeft: theme.spacing(3.5),
-  marginRight: theme.spacing(3.5),
+  padding: '18px 20px',
   borderRadius: theme.shape.borderRadius,
   transition: 'padding-left .25s ease-in-out, padding-right .25s ease-in-out',
   '&:hover': {
-    backgroundColor: theme.palette.action.hover
+    background: theme.palette.primary.main,
+    borderInlineEnd: `3px solid ${theme.palette.customColors.secondary}`,
+    '& .MuiTypography-root, & svg': {
+      color: `${theme.palette.common.white} !important`
+    }
   },
   '&.active': {
     '&, &:hover': {
-      boxShadow: `0px 2px 6px ${hexToRGBA(theme.palette.primary.main, 0.48)}`,
-      background: `linear-gradient(72.47deg, ${
-        theme.direction === 'ltr' ? theme.palette.primary.main : hexToRGBA(theme.palette.primary.main, 0.7)
-      } 22.16%, ${
-        theme.direction === 'ltr' ? hexToRGBA(theme.palette.primary.main, 0.7) : theme.palette.primary.main
-      } 76.47%)`,
+      background: theme.palette.primary.main,
+      borderInlineEnd: `3px solid ${theme.palette.customColors.secondary}`,
+
       '&.Mui-focusVisible': {
         background: `linear-gradient(72.47deg, ${theme.palette.primary.dark} 22.16%, ${hexToRGBA(
           theme.palette.primary.dark,
@@ -96,7 +96,7 @@ const VerticalNavLink = ({
         disablePadding
         className='nav-link'
         disabled={item.disabled || false}
-        sx={{ mt: 1, px: '0 !important' }}
+        sx={{ mt: 0, px: '0 !important' }}
       >
         <MenuNavLink
           component={Link}
@@ -114,9 +114,10 @@ const VerticalNavLink = ({
             }
           }}
           sx={{
-            py: 2,
+            // py: 2,
             ...(item.disabled ? { pointerEvents: 'none' } : { cursor: 'pointer' }),
-            px: navCollapsed && !navHover ? (collapsedNavWidth - navigationBorderWidth - 22 - 28) / 8 : 4,
+            // px: navCollapsed && !navHover ? (collapsedNavWidth - navigationBorderWidth - 22 - 28) / 8 : 4,
+            // px: 0,
             '& .MuiTypography-root, & svg': {
               color: 'text.secondary'
             }
@@ -125,11 +126,11 @@ const VerticalNavLink = ({
           <ListItemIcon
             sx={{
               transition: 'margin .25s ease-in-out',
-              ...(navCollapsed && !navHover ? { mr: 0 } : { mr: 2 }),
+              ...(navCollapsed && !navHover ? { mr: 0 } : { mr: '20px' }),
               ...(parent ? { ml: 1.5, mr: 3.5 } : {}),
               '& svg': {
-                fontSize: '0.625rem',
-                ...(!parent ? { fontSize: '1.375rem' } : {}),
+                fontSize: '24px',
+                ...(!parent ? { fontSize: '24px' } : {}),
                 ...(parent && item.icon ? { fontSize: '0.875rem' } : {})
               }
             }}

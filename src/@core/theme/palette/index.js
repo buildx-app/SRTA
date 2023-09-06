@@ -5,6 +5,8 @@ const DefaultPalette = (mode, skin) => {
   const darkColor = '208, 212, 241'
   const darkPaperBgColor = '#2F3349'
   const mainColor = mode === 'light' ? lightColor : darkColor
+  // const secondMainColor = '83, 164, 53'
+  const secondMainColor = '#53A435'
 
   const defaultBgColor = () => {
     if (skin === 'bordered' && mode === 'light') {
@@ -20,6 +22,7 @@ const DefaultPalette = (mode, skin) => {
     customColors: {
       dark: darkColor,
       main: mainColor,
+      secondary: secondMainColor,
       light: lightColor,
       lightPaperBg: whiteColor,
       darkPaperBg: darkPaperBgColor,
@@ -86,7 +89,7 @@ const DefaultPalette = (mode, skin) => {
       A700: '#616161'
     },
     text: {
-      primary: `rgba(${mainColor}, 0.78)`,
+      primary: `rgba(${mainColor}, 1)`,
       secondary: `rgba(${mainColor}, 0.68)`,
       // secondary: `#9F9F9F`,
       disabled: `rgba(${mainColor}, 0.42)`

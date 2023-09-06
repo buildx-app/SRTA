@@ -72,9 +72,18 @@ const VerticalNavHeader = props => {
   return (
     <MenuHeaderWrapper className='nav-header' sx={{ pl: menuHeaderPaddingLeft() }}>
       <Box sx={{ maxWidth: 181, width: '100%', overflow: 'hidden' }}>
-        <img src='/images-srpa/logo.png' alt='logo' style={{ width: '100%', height: '100%' }} />
+        <img src='/images-srpa/logo.svg' alt='logo' style={{ width: '100%', height: '100%' }} />
       </Box>
-
+      {hidden ? (
+        <IconButton
+          disableRipple
+          disableFocusRipple
+          onClick={toggleNavVisibility}
+          sx={{ p: 0, color: 'text.secondary', backgroundColor: 'transparent !important' }}
+        >
+          <Icon icon='tabler:x' fontSize='1.25rem' />
+        </IconButton>
+      ) : null}
       {/* {userNavMenuBranding ? (
         userNavMenuBranding(props)
       ) : (

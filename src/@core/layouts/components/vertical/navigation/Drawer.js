@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles'
 import MuiSwipeableDrawer from '@mui/material/SwipeableDrawer'
 
 const SwipeableDrawer = styled(MuiSwipeableDrawer)({
+  border: '0px',
   overflowX: 'hidden',
   transition: 'width .25s ease-in-out',
   '& ul': {
@@ -88,10 +89,10 @@ const Drawer = props => {
       PaperProps={{
         sx: {
           backgroundColor: 'background.paper',
-          ...(!hidden && skin !== 'bordered' && { boxShadow: 2 }),
+          ...(!hidden && skin == 'bordered' && { boxShadow: '9px 4px 24px 0px rgba(0, 0, 0, 0.04)' }),
           width: navCollapsed && !navHover ? collapsedNavWidth : navWidth,
           borderRight: theme =>
-            navigationBorderWidth === 0 ? 0 : `${navigationBorderWidth}px solid ${theme.palette.divider}`,
+            navigationBorderWidth === 0 ? `${navigationBorderWidth}px solid ${theme.palette.divider}` : 0,
           ...userNavMenuPaperStyle
         },
         ...navMenuProps?.PaperProps

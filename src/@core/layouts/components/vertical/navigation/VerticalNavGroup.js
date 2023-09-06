@@ -159,29 +159,30 @@ const VerticalNavGroup = props => {
           disablePadding
           className='nav-group'
           onClick={handleGroupClick}
-          sx={{ mt: 1, px: '0 !important', flexDirection: 'column' }}
+          sx={{ mt: '0 !important', marginTop: '0px !important', px: '0 !important', flexDirection: 'column' }}
         >
           <ListItemButton
             className={clsx({
               'Mui-selected': groupActive.includes(item.title) || currentActiveGroup.includes(item.title)
             })}
             sx={{
-              py: 2,
-              mx: 3.5,
-              borderRadius: 1,
+              borderRadius: 0,
               width: theme => `calc(100% - ${theme.spacing(3.5 * 2)})`,
               transition: 'padding-left .25s ease-in-out, padding-right .25s ease-in-out',
               px: navCollapsed && !navHover ? (collapsedNavWidth - navigationBorderWidth - 22 - 28) / 8 : 4,
               '&:hover': {
-                backgroundColor: 'action.hover'
+                background: theme.palette.primary.main,
+                borderInlineEnd: `3px solid ${theme.palette.customColors.secondary}`
               },
               '& .MuiTypography-root, & :not(.menu-item-meta) > svg': {
                 color: 'text.secondary'
               },
               '&.Mui-selected': {
-                backgroundColor: 'action.selected',
+                background: theme.palette.primary.main,
+                borderInlineEnd: `3px solid ${theme.palette.customColors.secondary}`,
                 '&:hover': {
-                  backgroundColor: 'action.selected'
+                  background: theme.palette.primary.main,
+                  borderInlineEnd: `3px solid ${theme.palette.customColors.secondary}`
                 },
                 '& .MuiTypography-root, & :not(.menu-item-meta) > svg': {
                   color: 'text.primary'
@@ -190,9 +191,11 @@ const VerticalNavGroup = props => {
                   color: 'text.secondary'
                 },
                 '&.Mui-focusVisible': {
-                  backgroundColor: 'action.focus',
+                  // backgroundColor: 'action.focus',
                   '&:hover': {
-                    backgroundColor: 'action.focus'
+                    // backgroundColor: 'action.focus'
+                    background: theme.palette.primary.main,
+                    borderInlineEnd: `3px solid ${theme.palette.customColors.secondary}`
                   }
                 }
               }
