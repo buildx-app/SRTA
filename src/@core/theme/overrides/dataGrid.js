@@ -3,7 +3,7 @@ const DataGrid = () => {
     MuiDataGrid: {
       styleOverrides: {
         root: ({ theme }) => ({
-          border: 0,
+          border: '1px solid #DDD',
           color: theme.palette.text.primary,
           '& .MuiDataGrid-columnHeader:focus, & .MuiDataGrid-columnHeader:focus-within': {
             outline: 'none'
@@ -38,7 +38,7 @@ const DataGrid = () => {
         columnHeaderTitle: ({ theme }) => ({
           fontWeight: 500,
           letterSpacing: '1px',
-          textTransform: 'uppercase',
+          textTransform: 'capitalize',
           fontSize: theme.typography.body2.fontSize
         }),
         columnSeparator: ({ theme }) => ({
@@ -52,7 +52,8 @@ const DataGrid = () => {
           }
         },
         cell: ({ theme }) => ({
-          borderColor: theme.palette.divider,
+          // borderColor: theme.palette.divider,
+          borderColor: '#F3F3F3',
           '&:not(.MuiDataGrid-cellCheckbox)': {
             paddingLeft: theme.spacing(4),
             paddingRight: theme.spacing(4),
