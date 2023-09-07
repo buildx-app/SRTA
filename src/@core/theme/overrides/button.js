@@ -245,13 +245,16 @@ const Button = () => {
           borderRadius: '0px',
           fontSize: '0.8125rem',
           ...(ownerState.variant === 'text' && {
-            padding: theme.spacing(1.5, 2.25)
+            // padding: theme.spacing(1.5, 2.25)
+            padding: theme.spacing(2.5, 3.5)
           }),
           ...((ownerState.variant === 'contained' || ownerState.variant === 'tonal') && {
-            padding: theme.spacing(1.5, 3.5)
+            padding: theme.spacing(2.5, 3.5),
+            fontSize: 16
           }),
           ...(ownerState.variant === 'outlined' && {
-            padding: theme.spacing(1.25, 3.25)
+            // padding: theme.spacing(1.25, 3.25)
+            padding: theme.spacing(2.5, 3.5)
           })
         }),
         sizeLarge: ({ ownerState, theme }) => ({

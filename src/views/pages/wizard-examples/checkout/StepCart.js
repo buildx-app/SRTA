@@ -320,7 +320,7 @@ const StepCart = ({ handleNext }) => {
           </CardContent>
         </Box>
         <Box sx={{ display: 'flex', ...(breakpointMD ? { justifyContent: 'flex-end' } : {}) }}>
-          <Button fullWidth={!breakpointMD} variant='contained' onClick={handleNext}>
+          <Button variant='contained' onClick={handleNext}>
             Place Order
           </Button>
         </Box>
