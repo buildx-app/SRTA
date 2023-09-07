@@ -1,14 +1,27 @@
+import Link from 'next/link'
+
 import React from 'react'
+import { styled } from '@mui/material/styles'
 import { Typography, Box, IconButton } from '@mui/material'
 import Icon from 'src/@core/components/icon'
 import TableBasic from '../table/data-grid/TableBasic'
+
+const LinkStyled = styled(Link)(({ theme }) => ({
+  textDecoration: 'underline',
+  color: `${theme.palette.primary.main} !important`
+}))
 
 const columns = [
   {
     flex: 0.25,
     minWidth: 120,
     field: 'examname',
-    headerName: 'Exam Name'
+    headerName: 'Exam Name',
+    renderCell: ({ row }) => (
+      <Typography component={LinkStyled} href={`/`}>
+        {row.examname}
+      </Typography>
+    )
   },
   {
     flex: 0.15,
@@ -34,15 +47,13 @@ const columns = [
     field: 'active',
     headerName: 'Active',
     sortable: false,
-    renderCell: () => <ActionOptions />
+    renderCell: () => <StatusFormatter />
   }
 ]
-const ActionOptions = () => (
-  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-    <IconButton variant='outlined' sx={{ fontSize: '21px' }}>
-      <Icon icon='tabler:circle-check' />
-    </IconButton>
-  </Box>
+const StatusFormatter = () => (
+  <IconButton variant='outlined' color='success' sx={{ fontSize: '21px' }}>
+    <Icon icon='lucide:check-circle' />
+  </IconButton>
 )
 const rows = [
   {
@@ -130,7 +141,7 @@ const rows = [
 function ExamsTable() {
   return (
     <>
-      <Box sx={{ height: '100%' }}>
+      <Box sx={{ height: { xs: 350, lg: '100%' } }}>
         <TableBasic columns={columns} rows={rows} hideFooter />
       </Box>
     </>

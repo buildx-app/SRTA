@@ -3,6 +3,12 @@ import { Typography, Box, IconButton } from '@mui/material'
 import Icon from 'src/@core/components/icon'
 import TableBasic from '../table/data-grid/TableBasic'
 
+const StatusFormatter = () => (
+  <IconButton variant='outlined' color='success' sx={{ fontSize: '21px' }}>
+    <Icon icon='lucide:check-circle' />
+  </IconButton>
+)
+
 const columns = [
   {
     flex: 0.25,
@@ -29,16 +35,10 @@ const columns = [
     field: 'register',
     headerName: 'Register',
     sortable: false,
-    renderCell: () => <ActionOptions />
+    renderCell: () => <StatusFormatter />
   }
 ]
-const ActionOptions = () => (
-  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-    <IconButton variant='outlined' sx={{ fontSize: '21px' }}>
-      <Icon icon='tabler:circle-check' />
-    </IconButton>
-  </Box>
-)
+
 const rows = [
   {
     id: 1,
@@ -115,7 +115,7 @@ const rows = [
 function StudentTable() {
   return (
     <>
-      <Box sx={{ height: '100%' }}>
+      <Box sx={{ height: { xs: 350, lg: '100%' } }}>
         <TableBasic rowHeight={63} columns={columns} rows={rows} hideFooter />
       </Box>
     </>

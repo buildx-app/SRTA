@@ -12,6 +12,16 @@ const navigation = () => {
       path: '/users'
     },
     {
+      title: 'Manage Roles',
+      icon: 'tabler:lock',
+      path: '/manage-rules'
+    },
+    {
+      title: 'Manage Permissions',
+      icon: 'arcticons:permissionchecker',
+      path: '/manage-permissions'
+    },
+    {
       title: 'Exams',
       icon: 'healthicons:i-exam-multiple-choice-outline',
       path: '/exams'

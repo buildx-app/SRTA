@@ -171,10 +171,11 @@ const VerticalNavGroup = props => {
               transition: 'padding-left .25s ease-in-out, padding-right .25s ease-in-out',
               px: navCollapsed && !navHover ? (collapsedNavWidth - navigationBorderWidth - 22 - 28) / 8 : 4,
               '&:hover': {
-                background: theme.palette.primary.main,
+                color: theme.palette.primary.main,
                 borderInlineEnd: `3px solid ${theme.palette.customColors.secondary}`
               },
               '& .MuiTypography-root, & :not(.menu-item-meta) > svg': {
+                fontSize: '18px !important',
                 color: 'text.secondary'
               },
               '&.Mui-selected': {
@@ -213,6 +214,7 @@ const VerticalNavGroup = props => {
             </ListItemIcon>
             <MenuItemTextWrapper sx={{ ...menuGroupCollapsedStyles, ...(isSubToSub ? { ml: 2 } : {}) }}>
               <Typography
+                sx={{ fontSize: '18px !important' }}
                 {...((themeConfig.menuTextTruncate || (!themeConfig.menuTextTruncate && navCollapsed && !navHover)) && {
                   noWrap: true
                 })}
