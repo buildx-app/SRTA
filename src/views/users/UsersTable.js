@@ -158,7 +158,7 @@ const rows = [
 const UserTable = () => {
   return (
     <Box sx={{ height: 550 }}>
-      <DataGrid columns={columns} rows={rows.slice(0, 10)} />
+      <DataGrid columns={columns} rows={rows} />
     </Box>
   )
 }
