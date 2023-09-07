@@ -116,7 +116,21 @@ app.prepare().then(() => {
       return res.status(500).json({ message: 'Server error' })
     }
   })
-
+  server.get('/api/get-users', async (req, res) => {
+    try {
+      const userQuery = await pool.query(
+        'SELECT u.id, u.name, u.username, u.email, u.phone, r.role_name FROM users u INNER JOIN roles r ON u.role_id = r.role_id'
+      )
+      // Get the role name based on the role_id from the "roles" table
+      const users = userQuery.rows
+      return res.status(200).json({
+        users: users
+      })
+    } catch (error) {
+      console.error('Error logging in:', error)
+      return res.status(500).json({ message: 'Server error' })
+    }
+  })
   server.get('/api/test', async (req, res) => {
     try {
       // Simulate some server logic

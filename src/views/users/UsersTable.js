@@ -3,8 +3,9 @@ import { IconButton } from '@mui/material'
 import OptionsMenu from 'src/@core/components/option-menu'
 import { DataGrid } from '@mui/x-data-grid'
 import Icon from 'src/@core/components/icon'
-import { Theme } from '@fullcalendar/core/internal'
-import TableBasic from '../table/data-grid/TableBasic'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import CircularProgress from '@mui/material/CircularProgress'
 
 const columns = [
   {
@@ -28,13 +29,13 @@ const columns = [
   {
     flex: 0.25,
     minWidth: 120,
-    field: 'phonenumber',
+    field: 'phone',
     headerName: 'Phone Number'
   },
   {
     flex: 0.15,
     minWidth: 120,
-    field: 'role',
+    field: 'role_name',
     headerName: 'Role(s)'
   },
   {
@@ -169,9 +170,43 @@ const rows = [
 ]
 
 const UserTable = () => {
+  const [loading, setLoading] = useState(false)
+  const [user, setUsers] = useState([])
+  useEffect(() => {
+    setLoading(true)
+    axios
+      .get(`${process.env.NEXT_PUBLIC_API_URL}/get-users`)
+      .then(res => {
+        console.log(res?.data)
+        const user = res?.data['users']?.map(item => {
+          return { ...item, action: '' }
+        })
+        console.log(user, 'final users')
+        setUsers(user)
+        setLoading(false)
+      })
+      .catch(error => {
+        setLoading(false)
+      })
+    console.log(user, 'users')
+  }, [])
   return (
     <Box sx={{ height: 550 }}>
-      <TableBasic columns={columns} rows={rows} hideFooter />
+      {loading ? (
+        <Box
+          sx={{
+            height: '50vh',
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'column',
+            justifyContent: 'center'
+          }}
+        >
+          <CircularProgress disableShrink sx={{ mt: 6 }} />{' '}
+        </Box>
+      ) : (
+        <DataGrid columns={columns} rows={user} />
+      )}
     </Box>
   )
 }
