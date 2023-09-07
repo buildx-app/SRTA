@@ -14,12 +14,19 @@ import { FormLabel, Grid } from '@mui/material'
 import { styled, useTheme } from '@mui/material/styles'
 import InputAdornment from '@mui/material/InputAdornment'
 import MuiFormControlLabel from '@mui/material/FormControlLabel'
+import axios from 'axios'
 
 // ** Custom Component Import
 import CustomTextField from 'src/@core/components/mui/text-field'
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
+
+// ** Third Party Imports
+import * as yup from 'yup'
+import { useAuth } from 'src/hooks/useAuth'
+import { useForm, Controller } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 // ** Layout Import
 import BlankLayout from 'src/@core/layouts/BlankLayout'
@@ -33,22 +40,43 @@ const FormControlLabel = styled(MuiFormControlLabel)(({ theme }) => ({
   }
 }))
 
+const schema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().min(5).required()
+})
+
+const defaultValues = {
+  password: '',
+  email: ''
+}
+
 const LoginPage = () => {
   // ** Hook
 
+  const auth = useAuth()
   const theme = useTheme()
+  const [rememberMe, setRememberMe] = useState(true)
+  const [showPassword, setShowPassword] = useState(false)
 
-  const [values, setValues] = useState({
-    password: '',
-    showPassword: false
+  const {
+    control,
+    setError,
+    handleSubmit,
+    formState: { errors }
+  } = useForm({
+    defaultValues,
+    mode: 'onBlur',
+    resolver: yupResolver(schema)
   })
 
-  const handleChange = prop => event => {
-    setValues({ ...values, [prop]: event.target.value })
-  }
-
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword })
+  const onSubmit = data => {
+    const { email, password } = data
+    auth.login({ email, password, rememberMe }, () => {
+      setError('email', {
+        type: 'manual',
+        message: 'Email or Password is invalid'
+      })
+    })
   }
 
   return (
@@ -104,44 +132,64 @@ const LoginPage = () => {
               </Typography>
             </Box>
 
-            <form noValidate autoComplete='off' style={{ width: '100%' }}>
+            <form noValidate autoComplete='off' style={{ width: '100%' }} onSubmit={handleSubmit(onSubmit)}>
               <FormLabel focused required sx={{ fontSize: '14px', fontWeight: 500, lineHeight: '30px' }}>
                 Email
               </FormLabel>
-              <CustomTextField
-                autoFocus
-                hiddenLabel
-                fullWidth
-                id='email'
-                sx={{ mb: 4 }}
-                placeholder='Enter your email'
+              <Controller
+                name='email'
+                control={control}
+                rules={{ required: true }}
+                render={({ field: { value, onChange, onBlur } }) => (
+                  <CustomTextField
+                    autoFocus
+                    hiddenLabel
+                    fullWidth
+                    value={value}
+                    onBlur={onBlur}
+                    onChange={onChange}
+                    sx={{ mb: 4 }}
+                    error={Boolean(errors.email)}
+                    placeholder='Enter your email'
+                    {...(errors.email && { helperText: errors.email.message })}
+                  />
+                )}
               />
               <FormLabel focused required sx={{ fontSize: '14px', fontWeight: 500, lineHeight: '30px' }}>
                 Password
               </FormLabel>
-              <CustomTextField
-                fullWidth
-                sx={{ mb: 1.5 }}
-                // label='Password'
-                value={values.password}
-                id='auth-login-password'
-                placeholder='············'
-                onChange={handleChange('password')}
-                type={values.showPassword ? 'text' : 'password'}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position='end'>
-                      <IconButton
-                        edge='end'
-                        onClick={handleClickShowPassword}
-                        onMouseDown={e => e.preventDefault()}
-                        aria-label='toggle password visibility'
-                      >
-                        <Icon fontSize='1.25rem' icon={values.showPassword ? 'tabler:eye' : 'tabler:eye-off'} />
-                      </IconButton>
-                    </InputAdornment>
-                  )
-                }}
+              <Controller
+                name='password'
+                control={control}
+                rules={{ required: true }}
+                render={({ field: { value, onChange, onBlur } }) => (
+                  <CustomTextField
+                    fullWidth
+                    sx={{ mb: 1.5 }}
+                    // label='Password'
+                    value={value}
+                    placeholder='············'
+                    onBlur={onBlur}
+                    onChange={onChange}
+                    error={Boolean(errors.password)}
+                    {...(errors.password && { helperText: errors.password.message })}
+                    type={showPassword ? 'text' : 'password'}
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position='end'>
+                          <IconButton
+                            edge='end'
+                            onMouseDown={e => e.preventDefault()}
+                            onClick={() => setShowPassword(!showPassword)}
+                            aria-label='toggle password visibility'
+                          >
+                            <Icon fontSize='1.25rem' icon={showPassword ? 'tabler:eye' : 'tabler:eye-off'} />
+                          </IconButton>
+                        </InputAdornment>
+                      )
+                    }}
+                  />
+                )}
               />
               <Box
                 sx={{
@@ -153,7 +201,11 @@ const LoginPage = () => {
                   color: '#9F9F9F'
                 }}
               >
-                <FormControlLabel control={<Checkbox />} color={theme.palette.text.secondary} label='Remember Me' />
+                <FormControlLabel
+                  control={<Checkbox checked={rememberMe} onChange={e => setRememberMe(e.target.checked)} />}
+                  color={theme.palette.text.secondary}
+                  label='Remember Me'
+                />
                 <Link
                   href='/forgot-password'
                   style={{
@@ -174,7 +226,7 @@ const LoginPage = () => {
                 Login
               </Button>
               <Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
-                <Typography sx={{ color: 'text.secondary', mr: 2 }}>Don’t have an account?</Typography>
+                {/* <Typography sx={{ color: 'text.secondary', mr: 2 }}>Don’t have an account?</Typography> */}
                 <Link
                   href='/register'
                   style={{
