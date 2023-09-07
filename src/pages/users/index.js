@@ -10,8 +10,8 @@ function index() {
         <Typography>Users</Typography>
         <Button>Add New</Button>
       </Box>
-      <EarningAreaChart />
-      {/* <UserTable /> */}
+      {/* <EarningAreaChart /> */}
+      <UserTable />
     </>
   )
 }
