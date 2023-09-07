@@ -1,8 +1,11 @@
 import Box from '@mui/material/Box'
 import { IconButton } from '@mui/material'
 import OptionsMenu from 'src/@core/components/option-menu'
+import OptionsMenu from 'src/@core/components/option-menu'
 import { DataGrid } from '@mui/x-data-grid'
 import Icon from 'src/@core/components/icon'
+import { Theme } from '@fullcalendar/core/internal'
+import TableBasic from '../table/data-grid/TableBasic'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import CircularProgress from '@mui/material/CircularProgress'
@@ -49,10 +52,10 @@ const columns = [
 ]
 const ActionOptions = () => (
   <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-    <IconButton variant='outlined' sx={{ fontSize: '21px', color: '#000' }}>
+    <IconButton variant='outlined' sx={{ fontSize: '21px', color: '#000', color: '#000' }}>
       <Icon icon='tabler:eye' />
     </IconButton>
-    <IconButton variant='outlined' sx={{ fontSize: '21px', color: '#000' }}>
+    <IconButton variant='outlined' sx={{ fontSize: '21px', color: '#000', color: '#000' }}>
       <Icon icon='tabler:trash' />
     </IconButton>
     <OptionsMenu
@@ -76,98 +79,98 @@ const ActionOptions = () => (
     ></OptionsMenu>
   </Box>
 )
-// const rows = [
-//   {
-//     id: 1,
-//     name: 'dfgsdf',
-//     username: 'sdfsdf ',
-//     email: 'xyx@gmail.com',
-//     phonenumber: '+91 1234567890',
-//     role: 'Examiner/Admin',
-//     action: ''
-//   },
-//   {
-//     id: 2,
-//     name: 'dfgsdf',
-//     username: 'sdfsdf ',
-//     email: 'xyx@gmail.com',
-//     phonenumber: '+91 1234567890',
-//     role: 'Examiner',
-//     action: ''
-//   },
-//   {
-//     id: 3,
-//     name: 'dfgsdf',
-//     username: 'sdfsdf ',
-//     email: 'xyx@gmail.com',
-//     phonenumber: '+91 1234567890',
-//     role: 'Admin',
-//     action: ''
-//   },
-//   {
-//     id: 4,
-//     name: 'dfgsdf',
-//     username: 'sdfsdf ',
-//     email: 'xyx@gmail.com',
-//     phonenumber: '+91 1234567890',
-//     role: 'Examiner/User',
-//     action: ''
-//   },
-//   {
-//     id: 5,
-//     name: 'dfgsdf',
-//     username: 'sdfsdf ',
-//     email: 'xyx@gmail.com',
-//     phonenumber: '+91 1234567890',
-//     role: 'Examiner',
-//     action: ''
-//   },
-//   {
-//     id: 6,
-//     name: 'dfgsdf',
-//     username: 'sdfsdf ',
-//     email: 'xyx@gmail.com',
-//     phonenumber: '+91 1234567890',
-//     role: 'Examiner/Admin',
-//     action: ''
-//   },
-//   {
-//     id: 7,
-//     name: 'dfgsdf',
-//     username: 'sdfsdf ',
-//     email: 'xyx@gmail.com',
-//     phonenumber: '+91 1234567890',
-//     role: 'Admin',
-//     action: ''
-//   },
-//   {
-//     id: 8,
-//     name: 'dfgsdf',
-//     username: 'sdfsdf ',
-//     email: 'xyx@gmail.com',
-//     phonenumber: '+91 1234567890',
-//     role: 'Examiner/User',
-//     action: ''
-//   },
-//   {
-//     id: 9,
-//     name: 'dfgsdf',
-//     username: 'sdfsdf ',
-//     email: 'xyx@gmail.com',
-//     phonenumber: '+91 1234567890',
-//     role: 'User',
-//     action: ''
-//   },
-//   {
-//     id: 10,
-//     name: 'dfgsdf',
-//     username: 'sdfsdf ',
-//     email: 'xyx@gmail.com',
-//     phonenumber: '+91 1234567890',
-//     role: 'User',
-//     action: ''
-//   }
-// ]
+const rows = [
+  {
+    id: 1,
+    name: 'dfgsdf',
+    username: 'sdfsdf ',
+    email: 'xyx@gmail.com',
+    phonenumber: '+91 1234567890',
+    role: 'Examiner/Admin',
+    action: ''
+  },
+  {
+    id: 2,
+    name: 'dfgsdf',
+    username: 'sdfsdf ',
+    email: 'xyx@gmail.com',
+    phonenumber: '+91 1234567890',
+    role: 'Examiner',
+    action: ''
+  },
+  {
+    id: 3,
+    name: 'dfgsdf',
+    username: 'sdfsdf ',
+    email: 'xyx@gmail.com',
+    phonenumber: '+91 1234567890',
+    role: 'Admin',
+    action: ''
+  },
+  {
+    id: 4,
+    name: 'dfgsdf',
+    username: 'sdfsdf ',
+    email: 'xyx@gmail.com',
+    phonenumber: '+91 1234567890',
+    role: 'Examiner/User',
+    action: ''
+  },
+  {
+    id: 5,
+    name: 'dfgsdf',
+    username: 'sdfsdf ',
+    email: 'xyx@gmail.com',
+    phonenumber: '+91 1234567890',
+    role: 'Examiner',
+    action: ''
+  },
+  {
+    id: 6,
+    name: 'dfgsdf',
+    username: 'sdfsdf ',
+    email: 'xyx@gmail.com',
+    phonenumber: '+91 1234567890',
+    role: 'Examiner/Admin',
+    action: ''
+  },
+  {
+    id: 7,
+    name: 'dfgsdf',
+    username: 'sdfsdf ',
+    email: 'xyx@gmail.com',
+    phonenumber: '+91 1234567890',
+    role: 'Admin',
+    action: ''
+  },
+  {
+    id: 8,
+    name: 'dfgsdf',
+    username: 'sdfsdf ',
+    email: 'xyx@gmail.com',
+    phonenumber: '+91 1234567890',
+    role: 'Examiner/User',
+    action: ''
+  },
+  {
+    id: 9,
+    name: 'dfgsdf',
+    username: 'sdfsdf ',
+    email: 'xyx@gmail.com',
+    phonenumber: '+91 1234567890',
+    role: 'User',
+    action: ''
+  },
+  {
+    id: 10,
+    name: 'dfgsdf',
+    username: 'sdfsdf ',
+    email: 'xyx@gmail.com',
+    phonenumber: '+91 1234567890',
+    role: 'User',
+    action: ''
+  }
+]
 
 const UserTable = () => {
   const [loading, setLoading] = useState(false)
@@ -205,7 +208,7 @@ const UserTable = () => {
           <CircularProgress disableShrink sx={{ mt: 6 }} />{' '}
         </Box>
       ) : (
-        <DataGrid columns={columns} rows={user} />
+        <TableBasic columns={columns} rows={user} hideFooter />
       )}
     </Box>
   )
