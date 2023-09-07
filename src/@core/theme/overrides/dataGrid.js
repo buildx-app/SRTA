@@ -4,6 +4,7 @@ const DataGrid = () => {
       styleOverrides: {
         root: ({ theme }) => ({
           border: '1px solid #DDD',
+          border: '1px solid #DDD',
           color: theme.palette.text.primary,
           '& .MuiDataGrid-columnHeader:focus, & .MuiDataGrid-columnHeader:focus-within': {
             outline: 'none'
@@ -39,7 +40,8 @@ const DataGrid = () => {
           fontWeight: 500,
           letterSpacing: '1px',
           textTransform: 'capitalize',
-          fontSize: theme.typography.body2.fontSize
+          fontSize: '18px',
+          fontWeight: 600
         }),
         columnSeparator: ({ theme }) => ({
           color: theme.palette.divider
@@ -54,9 +56,12 @@ const DataGrid = () => {
         cell: ({ theme }) => ({
           // borderColor: theme.palette.divider,
           borderColor: '#F3F3F3',
+          // borderColor: theme.palette.divider,
+          borderColor: '#F3F3F3',
           '&:not(.MuiDataGrid-cellCheckbox)': {
             paddingLeft: theme.spacing(4),
             paddingRight: theme.spacing(4),
+            color: '#9F9F9F',
             '&:first-of-type': {
               paddingLeft: theme.spacing(6)
             }
