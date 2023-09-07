@@ -6,7 +6,6 @@ import Icon from 'src/@core/components/icon'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import CircularProgress from '@mui/material/CircularProgress'
-
 const columns = [
   {
     flex: 0.25,
@@ -30,13 +29,11 @@ const columns = [
     flex: 0.25,
     minWidth: 120,
     field: 'phone',
-    field: 'phone',
     headerName: 'Phone Number'
   },
   {
     flex: 0.15,
     minWidth: 120,
-    field: 'role_name',
     field: 'role_name',
     headerName: 'Role(s)'
   },
