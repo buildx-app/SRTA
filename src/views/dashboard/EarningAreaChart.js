@@ -9,14 +9,10 @@ import { CardHeader } from '@mui/material'
 import CardContent from '@mui/material/CardContent'
 import InputAdornment from '@mui/material/InputAdornment'
 
-// ** Custom Component Import
-import CustomTextField from 'src/@core/components/mui/text-field'
-
 // ** Custom Components Import
 import ReactApexcharts from 'src/@core/components/react-apexcharts'
 
 // ** Third Party Imports
-import format from 'date-fns/format'
 import DatePicker from 'react-datepicker'
 
 // ** Icon Imports
@@ -55,12 +51,13 @@ const EarningAreaChart = () => {
       show: true,
       position: 'top',
       horizontalAlign: 'left',
-      floating: true,
       fontSize: 18,
       color: '#7D7D7D',
-      itemMargin: {
-        vertical: 0
-        // horizontal: 70
+      offsetX: -30,
+      offsetY: 0,
+      markers: {
+        width: 10,
+        height: 10
       }
     },
 
@@ -75,9 +72,10 @@ const EarningAreaChart = () => {
       borderColor: '#F3F3F3',
       strokeDashArray: 5,
       padding: {
-        top: 0,
+        top: 70,
         bottom: 30,
-        left: 40
+        left: 40,
+        right: 30
       }
     },
     fill: {
@@ -130,16 +128,13 @@ const EarningAreaChart = () => {
     },
     yaxis: {
       show: true,
-      seriesName: 'Pending',
       tickAmount: 4,
       min: 0,
       max: 100,
-      floating: true,
-      decimalsInFloat: 20,
       labels: {
         show: true,
         offsetX: 20,
-        offsetY: 10,
+        offsetY: 0,
         formatter: val => `${val}k`
       }
     }
@@ -165,9 +160,10 @@ const EarningAreaChart = () => {
               showMonthYearPicker
               dateFormat='MMM,yyyy'
               popperPlacement={'bottom-end'}
-              onChange={date => setMonth(date)}
+              onChange={month => setMonth(month)}
               customInput={
                 <CustomInput
+                  color='secondary'
                   size='small'
                   width={100}
                   InputProps={{

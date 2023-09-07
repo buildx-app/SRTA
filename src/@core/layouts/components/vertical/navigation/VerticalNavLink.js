@@ -30,10 +30,9 @@ const MenuNavLink = styled(ListItemButton)(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
   transition: 'padding-left .25s ease-in-out, padding-right .25s ease-in-out',
   '&:hover': {
-    background: theme.palette.primary.main,
-    borderInlineEnd: `3px solid ${theme.palette.customColors.secondary}`,
+    background: 'none',
     '& .MuiTypography-root, & svg': {
-      color: `${theme.palette.common.white} !important`
+      color: `${theme.palette.primary.main} !important`
     }
   },
   '&.active': {
@@ -118,8 +117,9 @@ const VerticalNavLink = ({
             ...(item.disabled ? { pointerEvents: 'none' } : { cursor: 'pointer' }),
             // px: navCollapsed && !navHover ? (collapsedNavWidth - navigationBorderWidth - 22 - 28) / 8 : 4,
             // px: 0,
-            '& .MuiTypography-root, & svg': {
-              color: 'text.secondary'
+            '& .MuiTypography-root': {
+              fontSize: '15px !important'
+              // color: 'text.secondary'
             }
           }}
         >

@@ -22,7 +22,7 @@ class CustomDocument extends Document {
             rel='stylesheet'
           />
           <link rel='apple-touch-icon' sizes='180x180' href='/images/apple-touch-icon.png' />
-          <link rel='shortcut icon' href='/images-srpa/mobile-logo.png' />
+          <link rel='shortcut icon' href='/images-srpa/mobile-logo.svg' />
         </Head>
         <body>
           <Main />

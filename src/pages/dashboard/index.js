@@ -102,16 +102,20 @@ function index() {
                 }}
               >
                 <Typography
-                  variant='h6'
-                  className='card-text'
                   sx={{
+                    fontSize: '18px',
                     lineHeight: '28px'
                   }}
                 >
                   Number of Teacher
                 </Typography>
-                <Typography variant='h6' className='card-text'>
-                  2468
+                <Typography
+                  sx={{
+                    fontWeight: 700,
+                    lineHeight: '28px'
+                  }}
+                >
+                  245
                 </Typography>
               </Box>
             </CardContent>
@@ -154,16 +158,20 @@ function index() {
                 }}
               >
                 <Typography
-                  variant='h6'
-                  className='card-text'
                   sx={{
+                    fontSize: '18px',
                     lineHeight: '28px'
                   }}
                 >
                   Number of Employee
                 </Typography>
-                <Typography variant='h6' className='card-text'>
-                  2468
+                <Typography
+                  sx={{
+                    fontWeight: 700,
+                    lineHeight: '28px'
+                  }}
+                >
+                  245
                 </Typography>
               </Box>
             </CardContent>
@@ -206,16 +214,20 @@ function index() {
                 }}
               >
                 <Typography
-                  variant='h6'
-                  className='card-text'
                   sx={{
+                    fontSize: '18px',
                     lineHeight: '28px'
                   }}
                 >
                   Number of Revenue
                 </Typography>
-                <Typography variant='h6' className='card-text'>
-                  2468
+                <Typography
+                  sx={{
+                    fontWeight: 700,
+                    lineHeight: '28px'
+                  }}
+                >
+                  245
                 </Typography>
               </Box>
             </CardContent>

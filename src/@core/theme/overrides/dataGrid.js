@@ -55,6 +55,7 @@ const DataGrid = () => {
         },
         cell: ({ theme }) => ({
           // borderColor: theme.palette.divider,
+          fontSize: '18px',
           borderColor: '#F3F3F3',
           // borderColor: theme.palette.divider,
           borderColor: '#F3F3F3',
