@@ -37,7 +37,7 @@ const AuthProvider = ({ children }) => {
       if (storedToken) {
         setLoading(true)
         if (window.localStorage.getItem('userData')) {
-          router.replace('/')
+          // router.replace('/')
           setLoading(false)
         }
 

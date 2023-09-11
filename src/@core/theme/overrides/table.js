@@ -8,14 +8,25 @@ const Table = () => {
         })
       }
     },
+    MuiTable: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          border: '1px solid',
+          borderColor: theme.palette.divider
+        })
+      }
+    },
     MuiTableHead: {
       styleOverrides: {
         root: ({ theme }) => ({
           textTransform: 'uppercase',
+          backgroundColor: '#F8FAFE',
           '& .MuiTableCell-head': {
             fontWeight: 500,
             letterSpacing: '1px',
-            fontSize: theme.typography.body2.fontSize
+            fontSize: theme.typography.body2.fontSize,
+            textTransform: 'capitalize',
+            p: '18px 29px'
           }
         })
       }

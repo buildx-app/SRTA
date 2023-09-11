@@ -1,9 +1,13 @@
 const DataGrid = () => {
   return {
     MuiDataGrid: {
+      defaultProps: {
+        disableColumnMenu: true,
+        rowHeight: 68,
+        columnHeaderHeight: 65
+      },
       styleOverrides: {
         root: ({ theme }) => ({
-          border: '1px solid #DDD',
           border: '1px solid #DDD',
           color: theme.palette.text.primary,
           '& .MuiDataGrid-columnHeader:focus, & .MuiDataGrid-columnHeader:focus-within': {
