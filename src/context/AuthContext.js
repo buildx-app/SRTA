@@ -62,6 +62,7 @@ const AuthProvider = ({ children }) => {
         //     }
         //   })
       } else {
+        router.replace('/login')
         setLoading(false)
       }
     }
