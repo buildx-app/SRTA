@@ -27,7 +27,13 @@ app.prepare().then(() => {
   const server = express()
 
   // Enable CORS
-  server.use(cors())
+  server.use(
+    cors({
+      origin: 'https://srta-oupiullaj-srta.vercel.app/', // Replace with your Vercel app URL
+      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+      credentials: true // If your API supports credentials (cookies, authorization)
+    })
+  )
   server.use(bodyParser.urlencoded({ extended: true }))
   server.use(bodyParser.json())
 
