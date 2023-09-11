@@ -29,7 +29,7 @@ app.prepare().then(() => {
   // Enable CORS
   server.use(
     cors({
-      origin: 'https://srta-gamma.vercel.app/', // Replace with your Vercel app URL
+      origin: 'https://srta-oupiullaj-srta.vercel.app/', // Replace with your Vercel app URL
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
       credentials: true // If your API supports credentials (cookies, authorization)
     })
