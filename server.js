@@ -65,6 +65,10 @@ app.prepare().then(() => {
         'INSERT INTO users (role_id, name, email, username, phone, password   ) VALUES ($1, $2, $3, $4, $5, $6)',
         [roleId, name, email, username, phone, hashedPassword]
       )
+      // Add response headers
+      res.setHeader('Access-Control-Allow-Origin', '*') // Replace '*' with your allowed origins
+      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
+      res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
       return res.status(201).json({ message: 'User registered successfully' })
     } catch (error) {
       console.error('Error registering user:', error)
@@ -102,6 +106,11 @@ app.prepare().then(() => {
       const roleQuery = await pool.query('SELECT role_name FROM roles WHERE role_id = $1', [user?.role_id])
       const userRole = roleQuery.rows[0].role_name
 
+      // Add response headers
+      res.setHeader('Access-Control-Allow-Origin', '*') // Replace '*' with your allowed origins
+      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
+      res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+
       return res.status(200).json({
         message: 'Login successful',
         accessToken: token,
@@ -123,6 +132,10 @@ app.prepare().then(() => {
       )
       // Get the role name based on the role_id from the "roles" table
       const users = userQuery.rows
+      // Add response headers
+      res.setHeader('Access-Control-Allow-Origin', '*') // Replace '*' with your allowed origins
+      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
+      res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
       return res.status(200).json({
         users: users
       })
@@ -136,6 +149,10 @@ app.prepare().then(() => {
       // Simulate some server logic
       // You can replace this with your actual logic
       const responseData = { message: 'hello from server' }
+      // Add response headers
+      res.setHeader('Access-Control-Allow-Origin', '*') // Replace '*' with your allowed origins
+      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
+      res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
 
       return res.status(200).json(responseData)
     } catch (error) {
