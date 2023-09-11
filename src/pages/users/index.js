@@ -8,7 +8,7 @@ function index() {
   return (
     <>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: '20px' }}>
-        <Typography sx={{ fontSize: '24px', fontWeight: 700, marginBottom: '20px' }}>Exams</Typography>
+        <Typography sx={{ fontSize: '24px', fontWeight: 700, marginBottom: '20px' }}>Users</Typography>
         <Button variant='contained' size='small' startIcon={<Icon icon='material-symbols:add' />}>
           Add New
         </Button>

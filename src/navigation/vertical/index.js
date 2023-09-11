@@ -14,12 +14,12 @@ const navigation = () => {
     {
       title: 'Manage Roles',
       icon: 'tabler:lock',
-      path: '/manage-rules'
+      path: '/roles'
     },
     {
       title: 'Manage Permissions',
-      icon: 'arcticons:permissionchecker',
-      path: '/manage-permissions'
+      icon: 'basil:user-outline',
+      path: '/permissions'
     },
     {
       title: 'Exams',
