@@ -12,6 +12,16 @@ const navigation = () => {
       path: '/users'
     },
     {
+      title: 'Manage Roles',
+      icon: 'tabler:lock',
+      path: '/roles'
+    },
+    {
+      title: 'Manage Permissions',
+      icon: 'basil:user-outline',
+      path: '/permissions'
+    },
+    {
       title: 'Exams',
       icon: 'healthicons:i-exam-multiple-choice-outline',
       path: '/exams'

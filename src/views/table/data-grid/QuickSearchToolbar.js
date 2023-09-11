@@ -8,6 +8,7 @@ import CustomTextField from 'src/@core/components/mui/text-field'
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
+import { Typography } from '@mui/material'
 
 const QuickSearchToolbar = props => {
   return (
@@ -18,36 +19,42 @@ const QuickSearchToolbar = props => {
         flexWrap: 'wrap',
         alignItems: 'center',
         justifyContent: 'space-between',
-        p: theme => theme.spacing(2, 5, 4, 5)
+        p: theme => theme.spacing(4, 5, 3, 5)
       }}
     >
-      <GridToolbarFilterButton />
-      <CustomTextField
-        value={props.value}
-        placeholder='Search…'
-        onChange={props.onChange}
-        InputProps={{
-          startAdornment: (
-            <Box sx={{ mr: 2, display: 'flex' }}>
-              <Icon fontSize='1.25rem' icon='tabler:search' />
-            </Box>
-          ),
-          endAdornment: (
-            <IconButton size='small' title='Clear' aria-label='Clear' onClick={props.clearSearch}>
-              <Icon fontSize='1.25rem' icon='tabler:x' />
-            </IconButton>
-          )
-        }}
-        sx={{
-          width: {
-            xs: 1,
-            sm: 'auto'
-          },
-          '& .MuiInputBase-root > svg': {
-            mr: 2
-          }
-        }}
-      />
+      <Typography sx={{ fontSize: '20px', fontWeight: 700 }}>List Of Roles</Typography>
+      {/* <GridToolbarFilterButton /> */}
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center' }}>
+        <Typography sx={{ fontSize: '20px', fontWeight: 400 }}>Search:</Typography>{' '}
+        <CustomTextField
+          value={props.value}
+          // placeholder='Search…'
+          onChange={props.onChange}
+          // InputProps={{
+          //   startAdornment: (
+          //     <Box sx={{ mr: 2, display: 'flex' }}>
+          //       <Icon fontSize='1.25rem' icon='tabler:search' />
+          //     </Box>
+          //   ),
+          //   endAdornment: (
+          //     <IconButton size='small' title='Clear' aria-label='Clear' onClick={props.clearSearch}>
+          //       <Icon fontSize='1.25rem' icon='tabler:x' />
+          //     </IconButton>
+          //   )
+          // }}
+          sx={{
+            ml: { xs: 2, sm: 2 },
+            width: 'auto',
+            // width: {
+            //   xs: 1,
+            //   sm: 'auto'
+            // },
+            '& .MuiInputBase-root > svg': {
+              mr: 2
+            }
+          }}
+        />
+      </Box>
     </Box>
   )
 }

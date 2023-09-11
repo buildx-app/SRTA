@@ -15,11 +15,7 @@ export default function TotalStudentChart() {
   const theme = useTheme()
 
   const options = {
-    colors: [
-      //   theme.palette.success.main,
-      hexToRGBA(theme.palette.primary.main, 0.4),
-      hexToRGBA(theme.palette.customColors.secondary, 0.4)
-    ],
+    colors: [hexToRGBA(theme.palette.primary.main, 0.4), hexToRGBA(theme.palette.customColors.secondary, 0.4)],
     stroke: { width: 0 },
     legend: {
       position: 'bottom',
@@ -33,13 +29,17 @@ export default function TotalStudentChart() {
       },
       onItemHover: {
         highlightDataSeries: false
+      },
+      markers: {
+        width: 10,
+        height: 10
       }
     },
     tooltip: { enabled: false },
-    // dataLabels: {
-    //   enabled: false,
-    //   formatter: val => `${parseInt(val, 10)}%`
-    // },
+    dataLabels: {
+      enabled: false,
+      formatter: val => `${parseInt(val, 10)}%`
+    },
     labels: ['Boys', 'Girls'],
     states: {
       hover: {
@@ -63,7 +63,6 @@ export default function TotalStudentChart() {
           size: '73%',
           labels: {
             show: true,
-            // formatter: labetFormatter,
             name: {
               offsetY: 22,
               color: theme.palette.text.secondary,
@@ -112,16 +111,10 @@ export default function TotalStudentChart() {
             <CustomTextField
               select
               defaultValue={9}
-              disabled
+              color='secondary'
+              variant='filled'
               size='small'
               id='custom-select'
-              variant='filled'
-              popupIcon={<KeyboardArrowDownIcon />}
-              SelectProps={{
-                variant: 'filled',
-                forcePopupIcon: true,
-                popupIcon: <KeyboardArrowDownIcon />
-              }}
               sx={{
                 '& .MuiInputBase-input:not(textarea)': {
                   p: '6px 10px !important',
