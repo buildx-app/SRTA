@@ -6,6 +6,8 @@ import Icon from 'src/@core/components/icon'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import CircularProgress from '@mui/material/CircularProgress'
+// ** Next Import
+import { useRouter } from 'next/router'
 
 const columns = [
   {
@@ -172,6 +174,8 @@ const ActionOptions = () => (
 const UserTable = () => {
   const [loading, setLoading] = useState(false)
   const [user, setUsers] = useState([])
+  const router = useRouter()
+
   useEffect(() => {
     setLoading(true)
     axios
@@ -186,6 +190,9 @@ const UserTable = () => {
         setLoading(false)
       })
       .catch(error => {
+        window.localStorage.removeItem('userData')
+        window.localStorage.removeItem(authConfig.storageTokenKeyName)
+        router.push('/login')
         setLoading(false)
       })
     console.log(user, 'users')
