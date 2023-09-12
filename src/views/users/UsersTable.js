@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box'
 import { IconButton } from '@mui/material'
 import OptionsMenu from 'src/@core/components/option-menu'
-import OptionsMenu from 'src/@core/components/option-menu'
 import { DataGrid } from '@mui/x-data-grid'
 import Icon from 'src/@core/components/icon'
 import axios from 'axios'
@@ -173,26 +172,6 @@ const ActionOptions = () => (
 // ]
 
 const UserTable = () => {
-  const [loading, setLoading] = useState(false)
-  const [user, setUsers] = useState([])
-  useEffect(() => {
-    setLoading(true)
-    axios
-      .get(`${process.env.NEXT_PUBLIC_API_URL}/get-users`)
-      .then(res => {
-        console.log(res?.data)
-        const user = res?.data['users']?.map(item => {
-          return { ...item, action: '' }
-        })
-        console.log(user, 'final users')
-        setUsers(user)
-        setLoading(false)
-      })
-      .catch(error => {
-        setLoading(false)
-      })
-    console.log(user, 'users')
-  }, [])
   const [loading, setLoading] = useState(false)
   const [user, setUsers] = useState([])
   useEffect(() => {
