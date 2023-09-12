@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import CircularProgress from '@mui/material/CircularProgress'
 // ** Next Import
 import { useRouter } from 'next/router'
+import authConfig from 'src/configs/auth'
 
 const columns = [
   {
@@ -179,7 +180,11 @@ const UserTable = () => {
   useEffect(() => {
     setLoading(true)
     axios
-      .get(`${process.env.NEXT_PUBLIC_API_URL}/get-users`)
+      .get(`${process.env.NEXT_PUBLIC_API_URL}/get-users`, {
+        headers: {
+          Authorization: `Bearer ${window.localStorage.getItem('accessToken')}`
+        }
+      })
       .then(res => {
         console.log(res?.data)
         const user = res?.data['users']?.map(item => {
