@@ -16,7 +16,7 @@ import toast from 'react-hot-toast'
 // ** Defaults
 const defaultProvider = {
   user: null,
-  loading: false,
+  loading: true,
   setUser: () => null,
   setLoading: () => Boolean,
   login: () => Promise.resolve(),
@@ -32,14 +32,16 @@ const AuthProvider = ({ children }) => {
   // ** Hooks
   const router = useRouter()
   useEffect(() => {
+    setLoading(true)
     const initAuth = async () => {
       const storedToken = window.localStorage.getItem(authConfig.storageTokenKeyName)
       if (storedToken) {
         setLoading(true)
         if (window.localStorage.getItem('userData')) {
-          // router.replace('/')
+          router.replace('/dashboard')
           setLoading(false)
         }
+        setLoading(false)
 
         // await axios
         //   .get(authConfig.meEndpoint, {
@@ -62,9 +64,14 @@ const AuthProvider = ({ children }) => {
         //     }
         //   })
       } else {
+        localStorage.removeItem('userData')
+        localStorage.removeItem('refreshToken')
+        localStorage.removeItem('accessToken')
+        setUser(null)
         router.replace('/login')
         setLoading(false)
       }
+      setLoading(false)
     }
     initAuth()
     // eslint-disable-next-line react-hooks/exhaustive-deps
