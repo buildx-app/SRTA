@@ -2,7 +2,6 @@ import { Box, Typography, Button } from '@mui/material'
 import React from 'react'
 import UserTable from 'src/views/users/UsersTable'
 import Icon from 'src/@core/components/icon'
-import Icon from 'src/@core/components/icon'
 
 function index() {
   return (

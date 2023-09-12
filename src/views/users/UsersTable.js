@@ -166,6 +166,98 @@ const ActionOptions = () => (
 //     role: 'User',
 //     action: ''
 //   }
+// ]    
+// const rows = [
+//   {
+//     id: 1,
+//     name: 'dfgsdf',
+//     username: 'sdfsdf ',
+//     email: 'xyx@gmail.com',
+//     phonenumber: '+91 1234567890',
+//     role: 'Examiner/Admin',
+//     action: ''
+//   },
+//   {
+//     id: 2,
+//     name: 'dfgsdf',
+//     username: 'sdfsdf ',
+//     email: 'xyx@gmail.com',
+//     phonenumber: '+91 1234567890',
+//     role: 'Examiner',
+//     action: ''
+//   },
+//   {
+//     id: 3,
+//     name: 'dfgsdf',
+//     username: 'sdfsdf ',
+//     email: 'xyx@gmail.com',
+//     phonenumber: '+91 1234567890',
+//     role: 'Admin',
+//     action: ''
+//   },
+//   {
+//     id: 4,
+//     name: 'dfgsdf',
+//     username: 'sdfsdf ',
+//     email: 'xyx@gmail.com',
+//     phonenumber: '+91 1234567890',
+//     role: 'Examiner/User',
+//     action: ''
+//   },
+//   {
+//     id: 5,
+//     name: 'dfgsdf',
+//     username: 'sdfsdf ',
+//     email: 'xyx@gmail.com',
+//     phonenumber: '+91 1234567890',
+//     role: 'Examiner',
+//     action: ''
+//   },
+//   {
+//     id: 6,
+//     name: 'dfgsdf',
+//     username: 'sdfsdf ',
+//     email: 'xyx@gmail.com',
+//     phonenumber: '+91 1234567890',
+//     role: 'Examiner/Admin',
+//     action: ''
+//   },
+//   {
+//     id: 7,
+//     name: 'dfgsdf',
+//     username: 'sdfsdf ',
+//     email: 'xyx@gmail.com',
+//     phonenumber: '+91 1234567890',
+//     role: 'Admin',
+//     action: ''
+//   },
+//   {
+//     id: 8,
+//     name: 'dfgsdf',
+//     username: 'sdfsdf ',
+//     email: 'xyx@gmail.com',
+//     phonenumber: '+91 1234567890',
+//     role: 'Examiner/User',
+//     action: ''
+//   },
+//   {
+//     id: 9,
+//     name: 'dfgsdf',
+//     username: 'sdfsdf ',
+//     email: 'xyx@gmail.com',
+//     phonenumber: '+91 1234567890',
+//     role: 'User',
+//     action: ''
+//   },
+//   {
+//     id: 10,
+//     name: 'dfgsdf',
+//     username: 'sdfsdf ',
+//     email: 'xyx@gmail.com',
+//     phonenumber: '+91 1234567890',
+//     role: 'User',
+//     action: ''
+//   }
 // ]
 
 const UserTable = () => {
