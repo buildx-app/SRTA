@@ -25,7 +25,7 @@ const columns = [
     headerName: 'Action',
     renderCell: row => (
       <>
-        <IconButton href={`/roles/edit/${row.id}`}>
+        <IconButton>
           <Icon icon='mingcute:edit-line' />
         </IconButton>
       </>

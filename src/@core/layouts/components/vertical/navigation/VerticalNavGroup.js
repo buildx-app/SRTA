@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 import Chip from '@mui/material/Chip'
 import Collapse from '@mui/material/Collapse'
 import ListItem from '@mui/material/ListItem'
-import { styled } from '@mui/material/styles'
+import { styled, useTheme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import ListItemIcon from '@mui/material/ListItemIcon'
@@ -63,6 +63,8 @@ const VerticalNavGroup = props => {
   const router = useRouter()
   const currentURL = router.asPath
   const { direction, navCollapsed, verticalNavToggleType } = settings
+
+  const theme = useTheme()
 
   // ** Accordion menu group open toggle
   const toggleActiveGroup = (item, parent) => {
@@ -167,16 +169,20 @@ const VerticalNavGroup = props => {
             })}
             sx={{
               borderRadius: 0,
-              width: theme => `calc(100% - ${theme.spacing(3.5 * 2)})`,
+              // width: theme => `calc(100% - ${theme.spacing(3.5 * 2)})`,
+              width: '100%',
               transition: 'padding-left .25s ease-in-out, padding-right .25s ease-in-out',
-              px: navCollapsed && !navHover ? (collapsedNavWidth - navigationBorderWidth - 22 - 28) / 8 : 4,
+              // px: navCollapsed && !navHover ? (collapsedNavWidth - navigationBorderWidth - 22 - 28) / 8 : 4,
+              padding: '18px 20px',
+              borderRadius: theme.shape.borderRadius,
+
               '&:hover': {
                 color: theme.palette.primary.main,
                 borderInlineEnd: `3px solid ${theme.palette.customColors.secondary}`
               },
-              '& .MuiTypography-root, & :not(.menu-item-meta) > svg': {
-                fontSize: '18px !important',
-                color: 'text.secondary'
+              '& .MuiTypography-root, & :not(.menu-item-meta) > svg , & .menu-item-meta > svg': {
+                fontSize: '18px !important'
+                // color: 'text.secondary'
               },
               '&.Mui-selected': {
                 background: theme.palette.primary.main,
@@ -186,10 +192,10 @@ const VerticalNavGroup = props => {
                   borderInlineEnd: `3px solid ${theme.palette.customColors.secondary}`
                 },
                 '& .MuiTypography-root, & :not(.menu-item-meta) > svg': {
-                  color: 'text.primary'
+                  color: '#FFF'
                 },
                 '& .menu-item-meta > svg': {
-                  color: 'text.secondary'
+                  color: '#FFF'
                 },
                 '&.Mui-focusVisible': {
                   // backgroundColor: 'action.focus',
@@ -205,12 +211,12 @@ const VerticalNavGroup = props => {
             <ListItemIcon
               sx={{
                 transition: 'margin .25s ease-in-out',
-                ...(parent && navCollapsed && !navHover ? {} : { mr: 2 }),
+                ...(parent && navCollapsed && !navHover ? {} : { mr: '20px' }),
                 ...(navCollapsed && !navHover ? { mr: 0 } : {}),
-                ...(parent && item.children ? { ml: 1.5, mr: 3.5 } : {})
+                ...(parent && item.children ? { ml: 1.5, mr: '20px' } : {})
               }}
             >
-              <UserIcon icon={icon} {...(parent && { fontSize: '0.625rem' })} />
+              <UserIcon icon={icon} {...(parent && { fontSize: '24px' })} />
             </ListItemIcon>
             <MenuItemTextWrapper sx={{ ...menuGroupCollapsedStyles, ...(isSubToSub ? { ml: 2 } : {}) }}>
               <Typography
@@ -227,7 +233,7 @@ const VerticalNavGroup = props => {
                   display: 'flex',
                   alignItems: 'center',
                   '& svg': {
-                    color: 'text.disabled',
+                    // color: 'text.disabled',
                     transition: 'transform .25s ease-in-out',
                     ...(groupActive.includes(item.title) && {
                       transform: direction === 'ltr' ? 'rotate(90deg)' : 'rotate(-90deg)'
@@ -235,7 +241,7 @@ const VerticalNavGroup = props => {
                   }
                 }}
               >
-                {item.badgeContent ? (
+                {/* {item.badgeContent ? (
                   <Chip
                     size='small'
                     label={item.badgeContent}
@@ -247,8 +253,8 @@ const VerticalNavGroup = props => {
                       '& .MuiChip-label': { px: 1.5, textTransform: 'capitalize' }
                     }}
                   />
-                ) : null}
-                <Icon fontSize='1.125rem' icon={direction === 'ltr' ? 'tabler:chevron-right' : 'tabler:chevron-left'} />
+                ) : null} */}
+                {/* <Icon fontSize='1.125rem' icon={direction === 'ltr' ? 'tabler:chevron-right' : 'tabler:chevron-left'} /> */}
               </Box>
             </MenuItemTextWrapper>
           </ListItemButton>
@@ -258,7 +264,8 @@ const VerticalNavGroup = props => {
             in={groupActive.includes(item.title)}
             sx={{
               pl: 0,
-              width: '100%',
+              // width: '100%',
+              width: theme => `calc(100% - ${theme.spacing(3.5 * 2)})`,
               ...menuGroupCollapsedStyles,
               transition: 'all 0.25s ease-in-out'
             }}
