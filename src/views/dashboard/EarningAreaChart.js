@@ -165,7 +165,10 @@ const EarningAreaChart = () => {
                 <CustomInput
                   color='secondary'
                   size='small'
-                  width={100}
+                  sx={{
+                    maxWidth: '121px',
+                    width: '100%'
+                  }}
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position='end'>

@@ -34,22 +34,24 @@ const navigation = () => {
     {
       title: 'Lookups',
       icon: 'tabler:search',
-      path: '/lookups'
-    },
-    {
-      title: 'Procedures',
-      icon: 'tabler:settings',
-      path: '/procedures'
-    },
-    {
-      title: 'Sections',
-      icon: 'tabler:chart-pie',
-      path: '/sections'
-    },
-    {
-      title: 'Categories',
-      icon: 'tabler:category',
-      path: '/categories'
+      // path: '/lookups',
+      children: [
+        {
+          title: 'Procedures',
+          icon: 'tabler:settings',
+          path: '/procedures'
+        },
+        {
+          title: 'Sections',
+          icon: 'tabler:chart-pie',
+          path: '/sections'
+        },
+        {
+          title: 'Categories',
+          icon: 'tabler:category',
+          path: '/categories'
+        }
+      ]
     }
   ]
 }
