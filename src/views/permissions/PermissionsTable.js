@@ -132,13 +132,18 @@ function PermissionsTable() {
   }
   return (
     <>
-      <DataGrid
-        autoHeight
-        rowHeight={48}
-        columns={columns}
-        rows={rows}
-        slots={{ toolbar: QuickSearchToolbar, footer: CustomTableFooter }}
-      />
+      <Box sx={{ height: 600 }}>
+        <DataGrid
+          rowHeight={68}
+          columns={columns}
+          rows={rows}
+          slots={{ toolbar: QuickSearchToolbar, footer: CustomTableFooter }}
+          slotProps={{
+            toolbar: { title: 'List of Permissions' }
+          }}
+        />
+      </Box>
+
       <Dialog
         open={isDialogOpen}
         onClose={handleCloseDialog}

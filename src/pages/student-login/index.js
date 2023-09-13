@@ -3,7 +3,6 @@ import { Box, Button, Container, Typography, TextField, Link, IconButton } from 
 import InputAdornment from '@mui/material/InputAdornment'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff'
-// import BlankLayout from 'src/@core/layouts/BlankLayout'
 import BlankLayoutWithAppBar from 'src/@core/layouts/BlankLayoutWithAppBar'
 
 function StudentLogin() {
@@ -24,11 +23,9 @@ function StudentLogin() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
-        // height: '100vh'
       }}
     >
-      {/* <Container> */}
-      <Box sx={{ maxWidth: '800px', width: '100%' }}>
+      <Box sx={{ maxWidth: '800px', width: '100%', mt: '90px' }}>
         <Box sx={{ marginBottom: '30px' }}>
           <Typography
             align='center'
@@ -74,7 +71,6 @@ function StudentLogin() {
             </Typography>
             <TextField
               fullWidth
-              // label='User Id'
             />
           </Box>
 
@@ -94,7 +90,7 @@ function StudentLogin() {
               Passcode
             </Typography>
             <TextField
-              type={showPassword ? 'text' : 'password'} // Toggle between 'text' and 'password' for visibility
+              type={showPassword ? 'text' : 'password'} 
               variant='outlined'
               fullWidth
               value={password}
@@ -109,16 +105,7 @@ function StudentLogin() {
                 )
               }}
             />
-            {/* <Typography
-                sx={{
-                  fontSize: '16px',
-                  fontWeight: 400,
-                  padding: '5px'
-                }}
-              >
-                Passcode
-              </Typography>
-              <TextField fullWidth label='Passcode' /> */}
+          
           </Box>
           <Box
             sx={{
@@ -154,15 +141,12 @@ function StudentLogin() {
                 Click here
               </Button>
             </Link>
-            {/* <Button size='medium'>Click here</Button> */}
           </Box>
         </Box>
       </Box>
-      {/* </Container> */}
     </Box>
   )
 }
-// StudentLogin.getLayout = page => <BlankLayout>{page}</BlankLayout>
 StudentLogin.getLayout = page => <BlankLayoutWithAppBar>{page}</BlankLayoutWithAppBar>
 
 StudentLogin.guestGuard = false
