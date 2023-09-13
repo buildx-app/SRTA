@@ -14,6 +14,7 @@ const Button = () => {
         {
           props: { variant: 'text', color: 'primary' },
           style: ({ theme }) => ({
+            backgroundColor: hexToRGBA(theme.palette.primary.main, 0.08),
             '&:hover': {
               backgroundColor: hexToRGBA(theme.palette.primary.main, 0.08)
             }
@@ -22,6 +23,7 @@ const Button = () => {
         {
           props: { variant: 'text', color: 'secondary' },
           style: ({ theme }) => ({
+            backgroundColor: hexToRGBA(theme.palette.secondary.main, 0.08),
             '&:hover': {
               backgroundColor: hexToRGBA(theme.palette.secondary.main, 0.08)
             }
@@ -30,6 +32,7 @@ const Button = () => {
         {
           props: { variant: 'text', color: 'success' },
           style: ({ theme }) => ({
+            backgroundColor: hexToRGBA(theme.palette.success.main, 0.08),
             '&:hover': {
               backgroundColor: hexToRGBA(theme.palette.success.main, 0.08)
             }
@@ -38,6 +41,7 @@ const Button = () => {
         {
           props: { variant: 'text', color: 'error' },
           style: ({ theme }) => ({
+            backgroundColor: hexToRGBA(theme.palette.error.main, 0.08),
             '&:hover': {
               backgroundColor: hexToRGBA(theme.palette.error.main, 0.08)
             }
@@ -46,6 +50,7 @@ const Button = () => {
         {
           props: { variant: 'text', color: 'warning' },
           style: ({ theme }) => ({
+            backgroundColor: hexToRGBA(theme.palette.warning.main, 0.08),
             '&:hover': {
               backgroundColor: hexToRGBA(theme.palette.warning.main, 0.08)
             }
@@ -54,6 +59,7 @@ const Button = () => {
         {
           props: { variant: 'text', color: 'info' },
           style: ({ theme }) => ({
+            backgroundColor: hexToRGBA(theme.palette.info.main, 0.08),
             '&:hover': {
               backgroundColor: hexToRGBA(theme.palette.info.main, 0.08)
             }
@@ -159,6 +165,7 @@ const Button = () => {
       styleOverrides: {
         root: ({ ownerState, theme }) => ({
           minWidth: 50,
+          fontWeight: 600,
           textTransform: 'none',
           '&:not(.Mui-disabled):active': {
             transform: 'scale(0.98)'
