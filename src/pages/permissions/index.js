@@ -27,7 +27,7 @@ function Index() {
   }
 
   return (
-    <Box>
+    <>
       <Box
         sx={{
           display: 'flex',
@@ -138,7 +138,7 @@ function Index() {
           </Button>
         </DialogActions>
       </Dialog>
-    </Box>
+    </>
   )
 }
 

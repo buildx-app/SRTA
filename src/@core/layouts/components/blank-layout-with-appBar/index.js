@@ -43,7 +43,7 @@ const BlankLayoutAppBar = () => {
           minHeight: `${theme.mixins.toolbar.minHeight - (skin === 'bordered' ? 1 : 0)}px !important`
         }}
       >
-        <LinkStyled href='/'>
+        {/* <LinkStyled href='/'>
           <svg width={34} viewBox='0 0 32 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
             <path
               fillRule='evenodd'
@@ -75,7 +75,9 @@ const BlankLayoutAppBar = () => {
           <Typography variant='h4' sx={{ ml: 2.5, fontWeight: 700, lineHeight: '24px' }}>
             {themeConfig.templateName}
           </Typography>
-        </LinkStyled>
+        </LinkStyled> */}
+ 
+
       </Toolbar>
     </AppBar>
   )

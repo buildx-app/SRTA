@@ -80,18 +80,18 @@ const Switch = () => {
         },
         sizeSmall: ({ theme }) => ({
           width: 38,
-          height: 30,
+          height: 35,
           '& .MuiSwitch-track': {
-            width: 24,
+            width: 25,
             height: 16
           },
           '& .MuiSwitch-thumb': {
-            width: 10,
-            height: 10
+            width: 12,
+            height: 12
           },
           '& .MuiSwitch-switchBase': {
-            top: 4,
-            left: 5,
+            top: 3,
+            left: 3,
             padding: `${theme.spacing(1.5)} !important`,
             '&.Mui-checked': {
               transform: 'translateX(7px)'
