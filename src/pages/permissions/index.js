@@ -111,29 +111,11 @@ function Index() {
             }}
           />
         </DialogContent>
-        <DialogActions sx={{ justifyContent: 'center' }}>
-          <Button
-            onClick={handleClose}
-            variant='contained'
-            sx={{
-              border: 'none'
-            }}
-          >
+        <DialogActions sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px' }}>
+          <Button variant='contained' onClick={handleClose}>
             Create Permission
           </Button>
-          <Button
-            onClick={handleClose}
-            variant='outlined'
-            sx={{
-              backgroundColor: '#F1F1F2',
-              border: 'none',
-              '&:hover': {
-                backgroundColor: '#0C80BF',
-                border: 'none',
-                color: '#ffffff'
-              }
-            }}
-          >
+          <Button variant='text' color='secondary' onClick={handleClose}>
             Cancel
           </Button>
         </DialogActions>
