@@ -37,8 +37,8 @@ const MenuNavLink = styled(ListItemButton)(({ theme }) => ({
   },
   '&.active': {
     '&, &:hover': {
-      // background: theme.palette.primary.main,
-      // borderInlineEnd: `3px solid ${theme.palette.customColors.secondary}`,
+      background: theme.palette.primary.main,
+      borderInlineEnd: `3px solid ${theme.palette.customColors.secondary}`,
 
       '&.Mui-focusVisible': {
         background: `linear-gradient(72.47deg, ${theme.palette.primary.dark} 22.16%, ${hexToRGBA(
@@ -48,7 +48,7 @@ const MenuNavLink = styled(ListItemButton)(({ theme }) => ({
       }
     },
     '& .MuiTypography-root, & svg': {
-      color: `${theme.palette.primary.main} !important`
+      color: `#FFF !important`
     }
   }
 }))

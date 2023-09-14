@@ -23,9 +23,21 @@ const Icon = () => {
 }
 
 const IndeterminateIcon = () => {
+  const theme = useTheme()
+
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'>
-      <path d='M4.16675 9.1665V10.8332H15.8334V9.1665H4.16675Z' fill='white' />
+    <svg
+      width='24'
+      height='24'
+      viewBox='0 0 24 24'
+      fill={theme.palette.primary.main}
+      xmlns='http://www.w3.org/2000/svg'
+    >
+      <path
+        fillRule='evenodd'
+        clipRule='evenodd'
+        d='M6.6 3.5H17.4C19.3882 3.5 21 5.11177 21 7.1V17.9C21 19.8882 19.3882 21.5 17.4 21.5H6.6C4.61177 21.5 3 19.8882 3 17.9V7.1C3 5.11177 4.61177 3.5 6.6 3.5ZM16.5 11.8569H7.5V13.1426H16.5V11.8569Z'
+      />
     </svg>
   )
 }
@@ -41,6 +53,9 @@ const Checkbox = () => {
       styleOverrides: {
         root: ({ theme }) => ({
           borderRadius: 0,
+          '&:hover': {
+            backgroundColor: 'transparent !important'
+          },
           '&.Mui-checked': {
             '& svg': {
               filter: `drop-shadow(0 2px 3px rgba(${
