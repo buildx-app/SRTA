@@ -8,8 +8,8 @@ const Backdrop = () => {
         root: ({ theme }) => ({
           backgroundColor:
             theme.palette.mode === 'light'
-              ? `rgba(${theme.palette.background.default}, 0.7)`
-              : hexToRGBA(theme.palette.background.default, 0.7)
+              ? `rgba(${theme.palette.primary.main}, 0.7)`
+              : hexToRGBA(theme.palette.primary.main, 0.7)
         }),
         invisible: {
           backgroundColor: 'transparent'

@@ -44,7 +44,7 @@ const DefaultPalette = (mode, skin) => {
     },
     secondary: {
       light: '#B2B4B8',
-      main: '#A8AAAE',
+      main: '#A1A1A5',
       dark: '#949699',
       contrastText: whiteColor
     },
@@ -93,6 +93,9 @@ const DefaultPalette = (mode, skin) => {
       secondary: `rgba(${mainColor}, 0.68)`,
       // secondary: `#9F9F9F`,
       disabled: `rgba(${mainColor}, 0.42)`
+    },
+    input: {
+      light: `rgba(221,221,221,1)`
     },
     divider: `rgba(${mainColor}, 0.16)`,
     background: {
