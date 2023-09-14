@@ -1,8 +1,5 @@
 import { Box, Typography, Button } from '@mui/material'
-import { Box, Typography, Button } from '@mui/material'
 import React from 'react'
-import EarningAreaChart from 'src/views/dashboard/EarningAreaChart'
-import UserTable from 'src/views/users/UsersTable'
 import UserTable from 'src/views/users/UsersTable'
 import Icon from 'src/@core/components/icon'
 
