@@ -88,7 +88,7 @@ function Index() {
           </Typography>
           <FormControl component='fieldset' sx={{ width: '100%' }}>
             <TextField
-              label='Enter Permission Name'
+              placeholder='Enter Permission Name'
               variant='outlined'
               fullWidth
               margin='normal'
