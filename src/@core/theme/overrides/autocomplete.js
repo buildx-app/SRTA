@@ -1,5 +1,6 @@
 // ** Util Import
 import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined'
 
 const Autocomplete = skin => {
   const boxShadow = theme => {
@@ -12,7 +13,21 @@ const Autocomplete = skin => {
 
   return {
     MuiAutocomplete: {
+      defaultProps: {
+        // size: 'small',
+        ChipProps: {
+          size: 'small',
+          variant: 'outlined',
+          deleteIcon: <CancelOutlinedIcon />
+        }
+      },
       styleOverrides: {
+        chip: {
+          '& .MuiChip-root': {
+            borderRadius: '0px !important',
+            backgroundColor: 'red !important'
+          }
+        },
         popper: ({ theme }) => ({
           '.MuiPaper-root': {
             boxShadow: boxShadow(theme),
