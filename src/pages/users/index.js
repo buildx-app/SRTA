@@ -66,6 +66,7 @@ function index() {
             First Name
           </Typography>
           <TextField
+            placeholder='Enter First Name'
             variant='outlined'
             fullWidth
             InputProps={{
@@ -85,6 +86,7 @@ function index() {
             Last Name
           </Typography>
           <TextField
+            placeholder='Enter Last Name'
             variant='outlined'
             fullWidth
             InputProps={{
@@ -104,6 +106,7 @@ function index() {
             Username
           </Typography>
           <TextField
+            placeholder='Enter Username'
             variant='outlined'
             fullWidth
             InputProps={{
@@ -123,6 +126,7 @@ function index() {
             Email
           </Typography>
           <TextField
+            placeholder='Enter Email'
             variant='outlined'
             fullWidth
             InputProps={{
@@ -142,6 +146,7 @@ function index() {
             Phone
           </Typography>
           <TextField
+            placeholder='Enter Phone'
             variant='outlined'
             fullWidth
             InputProps={{
@@ -158,9 +163,10 @@ function index() {
               marginBottom: '10px'
             }}
           >
-            Role
+            Role(S)
           </Typography>
           <TextField
+            placeholder='Enter Role'
             variant='outlined'
             fullWidth
             InputProps={{
