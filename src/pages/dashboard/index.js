@@ -19,7 +19,6 @@ function index() {
             }}
           >
             <CardContent
-              fullwidth
               className='card-box'
               sx={{
                 display: 'flex',
@@ -74,7 +73,6 @@ function index() {
             }}
           >
             <CardContent
-              fullwidth
               className='card-box'
               sx={{
                 display: 'flex',
@@ -130,7 +128,6 @@ function index() {
             }}
           >
             <CardContent
-              fullwidth
               className='card-box'
               sx={{
                 display: 'flex',
@@ -186,7 +183,6 @@ function index() {
             }}
           >
             <CardContent
-              fullwidth
               className='card-box'
               sx={{
                 display: 'flex',

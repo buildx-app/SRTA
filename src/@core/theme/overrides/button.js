@@ -16,7 +16,7 @@ const Button = () => {
           style: ({ theme }) => ({
             backgroundColor: hexToRGBA(theme.palette.primary.main, 0.08),
             '&:hover': {
-              backgroundColor: hexToRGBA(theme.palette.primary.main, 0.08)
+              backgroundColor: hexToRGBA(theme.palette.primary.main, 0.1)
             }
           })
         },
@@ -25,7 +25,7 @@ const Button = () => {
           style: ({ theme }) => ({
             backgroundColor: hexToRGBA(theme.palette.secondary.main, 0.08),
             '&:hover': {
-              backgroundColor: hexToRGBA(theme.palette.secondary.main, 0.08)
+              backgroundColor: hexToRGBA(theme.palette.secondary.main, 0.1)
             }
           })
         },
@@ -34,7 +34,7 @@ const Button = () => {
           style: ({ theme }) => ({
             backgroundColor: hexToRGBA(theme.palette.success.main, 0.08),
             '&:hover': {
-              backgroundColor: hexToRGBA(theme.palette.success.main, 0.08)
+              backgroundColor: hexToRGBA(theme.palette.success.main, 0.1)
             }
           })
         },
@@ -43,7 +43,7 @@ const Button = () => {
           style: ({ theme }) => ({
             backgroundColor: hexToRGBA(theme.palette.error.main, 0.08),
             '&:hover': {
-              backgroundColor: hexToRGBA(theme.palette.error.main, 0.08)
+              backgroundColor: hexToRGBA(theme.palette.error.main, 0.1)
             }
           })
         },
@@ -52,7 +52,7 @@ const Button = () => {
           style: ({ theme }) => ({
             backgroundColor: hexToRGBA(theme.palette.warning.main, 0.08),
             '&:hover': {
-              backgroundColor: hexToRGBA(theme.palette.warning.main, 0.08)
+              backgroundColor: hexToRGBA(theme.palette.warning.main, 0.1)
             }
           })
         },
@@ -61,7 +61,7 @@ const Button = () => {
           style: ({ theme }) => ({
             backgroundColor: hexToRGBA(theme.palette.info.main, 0.08),
             '&:hover': {
-              backgroundColor: hexToRGBA(theme.palette.info.main, 0.08)
+              backgroundColor: hexToRGBA(theme.palette.info.main, 0.1)
             }
           })
         },

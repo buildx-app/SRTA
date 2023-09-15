@@ -20,6 +20,7 @@ import {
   DialogActions,
   DialogContent
 } from '@mui/material'
+import CustomTextField from 'src/@core/components/mui/text-field'
 import Icon from 'src/@core/components/icon'
 
 const rows = [
@@ -166,9 +167,9 @@ function RolesTable() {
         </Typography>
         <DialogContent>
           <Typography sx={{ fontSize: '20px', fontWeight: 700, mb: '11px' }}>Role Name</Typography>
-          <Box sx={{ fontSize: '18px', color: '#7D7D7D', border: '1px solid #DDD', p: '9px 13px', mb: '28px' }}>
-            Admin
-          </Box>
+
+          <CustomTextField hiddenLabel disabled fullWidth value={'Admin'} sx={{ mb: '28px' }} />
+
           <Typography sx={{ fontSize: '20px', fontWeight: 700, mb: '30px' }}>Role Permissions</Typography>
 
           <TableContainer>

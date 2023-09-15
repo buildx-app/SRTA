@@ -8,6 +8,7 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
+  DialogActions,
   Button,
   Typography,
   FormControl,
@@ -90,6 +91,16 @@ function PermissionsTable() {
     setDialogOpen(true)
   }
 
+  const [deleteRow, setDeleteRow] = useState(false)
+
+  const handleOpenDeleteDialog = () => {
+    setDeleteRow(true)
+  }
+
+  const handleCloseDeleteDialog = () => {
+    setDeleteRow(false)
+  }
+
   const columns = [
     {
       flex: 0.25,
@@ -119,7 +130,7 @@ function PermissionsTable() {
           <IconButton onClick={() => handleIconButtonClick(row)} sx={{ fontSize: '21px', color: '#000' }}>
             <Icon icon='mingcute:edit-line' />
           </IconButton>
-          <IconButton variant='outlined' sx={{ fontSize: '21px', color: '#000' }}>
+          <IconButton variant='outlined' onClick={handleOpenDeleteDialog} sx={{ fontSize: '21px', color: '#000' }}>
             <Icon icon='tabler:trash' />
           </IconButton>
         </>
@@ -263,6 +274,43 @@ function PermissionsTable() {
             />
           </Box>
         </DialogContent>
+      </Dialog>
+      <Dialog
+        open={deleteRow}
+        onClose={handleOpenDeleteDialog}
+        sx={{
+          '& .MuiDialog-container': {
+            '& .MuiPaper-root': {
+              width: '100%'
+            }
+          }
+        }}
+      >
+        <DialogTitle
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            width: '580px',
+            fontSize: '24px',
+            fontWeight: 700
+          }}
+        >
+          Delete Confirmation
+        </DialogTitle>
+
+        <DialogContent>
+          <Alert severity='error'>
+            Are you sure you want to delete the permission <strong>Edit Users!</strong>{' '}
+          </Alert>
+        </DialogContent>
+        <DialogActions sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'end', gap: '20px' }}>
+          <Button variant='text' color='secondary' onClick={handleCloseDeleteDialog}>
+            Cancel
+          </Button>
+          <Button variant='contained' onClick={handleCloseDeleteDialog}>
+            Delete
+          </Button>
+        </DialogActions>
       </Dialog>
     </>
   )

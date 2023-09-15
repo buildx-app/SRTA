@@ -76,8 +76,6 @@ const BlankLayoutAppBar = () => {
             {themeConfig.templateName}
           </Typography>
         </LinkStyled> */}
- 
-
       </Toolbar>
     </AppBar>
   )
