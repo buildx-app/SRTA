@@ -23,9 +23,21 @@ const Icon = () => {
 }
 
 const IndeterminateIcon = () => {
+  const theme = useTheme()
+
   return (
     <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'>
-      <path d='M4.16675 9.1665V10.8332H15.8334V9.1665H4.16675Z' fill='white' />
+      <g clip-path='url(#clip0_574_967)'>
+        <path
+          d='M16.9999 0.000149646H3.00009C2.20446 0.000149646 0.5 -1.34136e-06 0 9.004e-09C-1.27218e-06 0.499994 0.000143409 2.20446 0.000143409 3.0001V16.9999C0.000143409 17.7955 -1.21666e-06 19 5.66244e-07 20C0.499993 20 2.20446 19.9998 3.00009 19.9998H16.9999C17.7955 19.9998 19 20 20 20C20 19 19.9998 17.7955 19.9998 16.9999V3.0001C19.9998 2.20446 20 0.499999 20 6.77413e-06C19.5 0 17.7955 0.000149646 16.9999 0.000149646ZM14.9999 11H5.00006L5 10.5C5 10.5 5 10.2652 5 10C5 9.73479 5 9.5 5 9.5C5 9 5.00006 9 5.00006 9H14.9999L15 9.5C15 9.5 15 9.73479 15 10C15 10.2652 14.9999 11 14.9999 11Z'
+          fill={theme.palette.primary.main}
+        />
+      </g>
+      <defs>
+        <clipPath id='clip0_574_967'>
+          <rect width='20' height='20' fill='white' />
+        </clipPath>
+      </defs>
     </svg>
   )
 }
@@ -41,6 +53,9 @@ const Checkbox = () => {
       styleOverrides: {
         root: ({ theme }) => ({
           borderRadius: 0,
+          '&:hover': {
+            backgroundColor: 'transparent !important'
+          },
           '&.Mui-checked': {
             '& svg': {
               filter: `drop-shadow(0 2px 3px rgba(${
