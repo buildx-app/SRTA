@@ -127,7 +127,7 @@ function PermissionsTable() {
       headerName: 'Action',
       renderCell: row => (
         <>
-          <IconButton onClick={() => handleIconButtonClick(row)}>
+          <IconButton onClick={() => handleIconButtonClick(row)} sx={{ fontSize: '21px', color: '#000' }}>
             <Icon icon='mingcute:edit-line' />
           </IconButton>
           <IconButton variant='outlined' onClick={handleOpenDeleteDialog} sx={{ fontSize: '21px', color: '#000' }}>
@@ -241,7 +241,7 @@ function PermissionsTable() {
               }}
             >
               <TextField
-                label='Enter Permission Name'
+                placeholder='Enter Permission Name'
                 variant='outlined'
                 fullWidth
                 InputProps={{
