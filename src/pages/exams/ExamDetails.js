@@ -137,7 +137,7 @@ function ExamDetails({ open, onClose }) {
                 sx={{
                   fontSize: '20px',
                   fontWeight: 700,
-                  color:'#0C374F'
+                  color: '#0C374F'
                 }}
               >
                 Evaluators
@@ -154,7 +154,7 @@ function ExamDetails({ open, onClose }) {
                   marginBottom: '20px'
                 }}
               >
-                <TextField placeholder='Enter Evaluators ' variant='outlined' fullWidth sx={{ mt: 2 }}/>
+                <TextField placeholder='Enter Evaluators ' variant='outlined' fullWidth sx={{ mt: 2 }} />
               </FormControl>
             </Grid>
             <Grid>
@@ -165,7 +165,7 @@ function ExamDetails({ open, onClose }) {
                 sx={{
                   fontSize: '20px',
                   fontWeight: 700,
-                  color:'#0C374F'
+                  color: '#0C374F'
                 }}
               >
                 Assistants
@@ -182,7 +182,7 @@ function ExamDetails({ open, onClose }) {
                   marginBottom: '20px'
                 }}
               >
-                <TextField placeholder='Enter Assistants' variant='outlined' fullWidth sx={{ mt: 2 }}/>
+                <TextField placeholder='Enter Assistants' variant='outlined' fullWidth sx={{ mt: 2 }} />
               </FormControl>
             </Grid>
             <Grid>
@@ -193,7 +193,7 @@ function ExamDetails({ open, onClose }) {
                 sx={{
                   fontSize: '20px',
                   fontWeight: 700,
-                  color:'#0C374F'
+                  color: '#0C374F'
                 }}
               >
                 Invigilators
@@ -210,7 +210,7 @@ function ExamDetails({ open, onClose }) {
                   marginBottom: '20px'
                 }}
               >
-                <TextField placeholder='Enter Invigilators' variant='outlined' fullWidth  sx={{ mt: 2 }}/>
+                <TextField placeholder='Enter Invigilators' variant='outlined' fullWidth sx={{ mt: 2 }} />
               </FormControl>
             </Grid>
             <Grid>
@@ -221,7 +221,7 @@ function ExamDetails({ open, onClose }) {
                 sx={{
                   fontSize: '20px',
                   fontWeight: 700,
-                  color:'#0C374F'
+                  color: '#0C374F'
                 }}
               >
                 Manager
@@ -239,7 +239,7 @@ function ExamDetails({ open, onClose }) {
                   marginBottom: '20px'
                 }}
               >
-                <TextField placeholder='Enter Manager Name' variant='outlined' fullWidth sx={{ mt: 2 }}/>
+                <TextField placeholder='Enter Manager Name' variant='outlined' fullWidth sx={{ mt: 2 }} />
               </FormControl>
             </Grid>
             <DialogActions
