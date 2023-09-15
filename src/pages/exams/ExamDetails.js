@@ -12,6 +12,8 @@ import {
   TextField,
   DialogActions,
   FormLabel
+  DialogActions,
+  FormLabel
 } from '@mui/material'
 
 function ExamDetails({ open, onClose }) {
@@ -34,12 +36,16 @@ function ExamDetails({ open, onClose }) {
             <Typography sx={{ fontSize: '24px', fontWeight: '700', lineHeight: '30px', paddingBottom: '15px' }}>
               Exam Details
             </Typography>
+            <Typography sx={{ fontSize: '24px', fontWeight: '700', lineHeight: '30px', paddingBottom: '15px' }}>
+              Exam Details
+            </Typography>
             <Grid>
               <ListItem
                 sx={{
                   padding: '0'
                 }}
               >
+                <strong style={{ color: '#0C374F', paddingRight: '10px' }}>Exam Code :</strong>
                 <strong style={{ color: '#0C374F', paddingRight: '10px' }}>Exam Code :</strong>
                 <ListItemText>REIK-3211</ListItemText>
               </ListItem>
@@ -51,6 +57,7 @@ function ExamDetails({ open, onClose }) {
                 }}
               >
                 <strong style={{ color: '#0C374F', paddingRight: '10px' }}>Exam Date :</strong>
+                <strong style={{ color: '#0C374F', paddingRight: '10px' }}>Exam Date :</strong>
                 <ListItemText>2022/01/07 12:00 am - 2022/01/09 12:00 am</ListItemText>
               </ListItem>
             </Grid>
@@ -60,6 +67,7 @@ function ExamDetails({ open, onClose }) {
                   padding: '0'
                 }}
               >
+                <strong style={{ color: '#0C374F', paddingRight: '10px' }}>Type :</strong>
                 <strong style={{ color: '#0C374F', paddingRight: '10px' }}>Type :</strong>
                 <ListItemText>MANIK</ListItemText>
               </ListItem>
@@ -71,6 +79,7 @@ function ExamDetails({ open, onClose }) {
                 }}
               >
                 <strong style={{ color: '#0C374F', paddingRight: '10px' }}>Facility :</strong>
+                <strong style={{ color: '#0C374F', paddingRight: '10px' }}>Facility :</strong>
                 <ListItemText>Asteroid</ListItemText>
               </ListItem>
             </Grid>
@@ -80,6 +89,7 @@ function ExamDetails({ open, onClose }) {
                   padding: '0'
                 }}
               >
+                <strong style={{ color: '#0C374F', paddingRight: '10px' }}>State :</strong>
                 <strong style={{ color: '#0C374F', paddingRight: '10px' }}>State :</strong>
                 <ListItemText>KTM</ListItemText>
               </ListItem>
@@ -91,6 +101,7 @@ function ExamDetails({ open, onClose }) {
                 }}
               >
                 <strong style={{ color: '#0C374F', paddingRight: '10px' }}>ZIP :</strong>
+                <strong style={{ color: '#0C374F', paddingRight: '10px' }}>ZIP :</strong>
                 <ListItemText>46000</ListItemText>
               </ListItem>
             </Grid>
@@ -100,6 +111,7 @@ function ExamDetails({ open, onClose }) {
                   padding: '0'
                 }}
               >
+                <strong style={{ color: '#0C374F', paddingRight: '10px' }}>Address :</strong>
                 <strong style={{ color: '#0C374F', paddingRight: '10px' }}>Address :</strong>
                 <ListItemText>Kathmandu</ListItemText>
               </ListItem>
@@ -111,6 +123,7 @@ function ExamDetails({ open, onClose }) {
                 }}
               >
                 <strong style={{ color: '#0C374F', paddingRight: '10px' }}>Manager :</strong>
+                <strong style={{ color: '#0C374F', paddingRight: '10px' }}>Manager :</strong>
                 <ListItemText>Chandrakant Patel</ListItemText>
               </ListItem>
             </Grid>
@@ -119,12 +132,16 @@ function ExamDetails({ open, onClose }) {
             <Grid sx={{ paddingTop: '50px' }}>
               <FormLabel
                 required
+              <FormLabel
+                required
                 sx={{
                   fontSize: '20px',
                   fontWeight: 700,
-                  color: '#0C374F'
+                  color:'#0C374F'
                 }}
               >
+                Evaluators
+              </FormLabel>
                 Evaluators
               </FormLabel>
               <FormControl
@@ -137,18 +154,22 @@ function ExamDetails({ open, onClose }) {
                   marginBottom: '20px'
                 }}
               >
-                <TextField placeholder='Enter Evaluators ' variant='outlined' fullWidth sx={{ mt: 2 }} />
+                <TextField placeholder='Enter Evaluators ' variant='outlined' fullWidth sx={{ mt: 2 }}/>
               </FormControl>
             </Grid>
             <Grid>
               <FormLabel
                 required
+              <FormLabel
+                required
                 sx={{
                   fontSize: '20px',
                   fontWeight: 700,
-                  color: '#0C374F'
+                  color:'#0C374F'
                 }}
               >
+                Assistants
+              </FormLabel>
                 Assistants
               </FormLabel>
               <FormControl
@@ -161,18 +182,22 @@ function ExamDetails({ open, onClose }) {
                   marginBottom: '20px'
                 }}
               >
-                <TextField placeholder='Enter Assistants' variant='outlined' fullWidth sx={{ mt: 2 }} />
+                <TextField placeholder='Enter Assistants' variant='outlined' fullWidth sx={{ mt: 2 }}/>
               </FormControl>
             </Grid>
             <Grid>
               <FormLabel
                 required
+              <FormLabel
+                required
                 sx={{
                   fontSize: '20px',
                   fontWeight: 700,
-                  color: '#0C374F'
+                  color:'#0C374F'
                 }}
               >
+                Invigilators
+              </FormLabel>
                 Invigilators
               </FormLabel>
               <FormControl
@@ -185,18 +210,22 @@ function ExamDetails({ open, onClose }) {
                   marginBottom: '20px'
                 }}
               >
-                <TextField placeholder='Enter Invigilators' variant='outlined' fullWidth sx={{ mt: 2 }} />
+                <TextField placeholder='Enter Invigilators' variant='outlined' fullWidth  sx={{ mt: 2 }}/>
               </FormControl>
             </Grid>
             <Grid>
               <FormLabel
                 required
+              <FormLabel
+                required
                 sx={{
                   fontSize: '20px',
                   fontWeight: 700,
-                  color: '#0C374F'
+                  color:'#0C374F'
                 }}
               >
+                Manager
+              </FormLabel>
                 Manager
               </FormLabel>
               <FormControl
@@ -207,9 +236,10 @@ function ExamDetails({ open, onClose }) {
                   flexDirection: 'row',
                   alignItems: 'center',
                   marginBottom: '20px'
+                  marginBottom: '20px'
                 }}
               >
-                <TextField placeholder='Enter Manager Name' variant='outlined' fullWidth sx={{ mt: 2 }} />
+                <TextField placeholder='Enter Manager Name' variant='outlined' fullWidth sx={{ mt: 2 }}/>
               </FormControl>
             </Grid>
             <DialogActions

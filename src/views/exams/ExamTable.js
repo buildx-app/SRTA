@@ -59,7 +59,7 @@ const rows = [
 ]
 
 function ExamsTable() {
-  const [isDialogOpen, setDialogOpen] = useState(false)
+  const [isDialogOpen, setDialogOpen] = useState(true)
   const [selectedRowData, setSelectedRowData] = useState(null)
 
   const handleStatusChange = row => {
@@ -155,7 +155,7 @@ function ExamsTable() {
       headerName: 'Action',
       renderCell: row => (
         <>
-          <IconButton onClick={() => handleIconButtonClick(row)} sx={{ fontSize: '21px', color: '#000' }}>
+          <IconButton onClick={() => handleIconButtonClick(row)}>
             <Icon icon='mingcute:edit-line' />
           </IconButton>
           <IconButton variant='outlined' sx={{ fontSize: '21px', color: '#000' }}>
@@ -235,10 +235,6 @@ function ExamsTable() {
                         endDate={endDate}
                         selected={startDate}
                         startDate={startDate}
-                        timeFormat='HH:mm'
-                        timeIntervals={15}
-                        timeCaption='time'
-                        dateFormat='MMMM d, yyyy h:mm aa'
                         id='date-range-picker'
                         onChange={handleOnChange}
                         shouldCloseOnSelect={false}
@@ -404,10 +400,8 @@ function ExamsTable() {
                 gap: '20px'
               }}
             >
-              <Button variant='contained' onClick={handleCloseDialog}>
-                Save
-              </Button>
-              <Button variant='text' color='secondary' onClick={handleCloseDialog}>
+              <Button variant='contained'>Save</Button>
+              <Button variant='text' color='secondary'>
                 Cancel
               </Button>
             </DialogActions>
