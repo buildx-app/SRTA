@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Typography,
   Box,
@@ -19,14 +19,61 @@ import {
 import Icon from 'src/@core/components/icon'
 import RolesTable from 'src/views/roles/RolesTable'
 
+const rolesArr = [
+  'User Management',
+  'Content Management',
+  'Disputes Management',
+  'Database Management',
+  'Financial Management',
+  'Reporting',
+  'API Control',
+  'Repository Management',
+  'Payroll'
+]
+
 function index() {
   const [isDialogOpen, setDialogOpen] = useState(false)
+  const [selectedCheckbox, setSelectedCheckbox] = useState([])
+  const [isIndeterminateCheckbox, setIsIndeterminateCheckbox] = useState(false)
+
   const handleDialog = () => {
     setDialogOpen(true)
   }
+
   const handleClose = () => {
     setDialogOpen(false)
   }
+
+  const togglePermission = id => {
+    const arr = selectedCheckbox
+    if (selectedCheckbox.includes(id)) {
+      arr.splice(arr.indexOf(id), 1)
+      setSelectedCheckbox([...arr])
+    } else {
+      arr.push(id)
+      setSelectedCheckbox([...arr])
+    }
+  }
+
+  const handleSelectAllCheckbox = () => {
+    if (isIndeterminateCheckbox) {
+      setSelectedCheckbox([])
+    } else {
+      rolesArr.forEach(row => {
+        const id = row.toLowerCase().split(' ').join('-')
+        togglePermission(`${id}-read`)
+        togglePermission(`${id}-write`)
+        togglePermission(`${id}-create`)
+      })
+    }
+  }
+  useEffect(() => {
+    if (selectedCheckbox.length > 0 && selectedCheckbox.length < rolesArr.length * 3) {
+      setIsIndeterminateCheckbox(true)
+    } else {
+      setIsIndeterminateCheckbox(false)
+    }
+  }, [selectedCheckbox])
 
   return (
     <>
@@ -117,10 +164,16 @@ function index() {
                   <TableCell>
                     {' '}
                     <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color='red'
                       label='Select All'
+                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
+                      control={
+                        <Checkbox
+                          onChange={handleSelectAllCheckbox}
+                          indeterminate={isIndeterminateCheckbox}
+                          // indeterminateicon={<IndeterminateCheckBoxIcon />}
+                          checked={selectedCheckbox.length === rolesArr.length * 3}
+                        />
+                      }
                     />
                   </TableCell>
                   <TableCell></TableCell>
@@ -129,246 +182,57 @@ function index() {
               </TableHead>
 
               <TableBody>
-                <TableRow sx={{ '& .MuiTableCell-root:first-of-type': { pl: '0 !important' } }}>
-                  <TableCell>User Management</TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.text.secondary}
-                      label='Read'
-                    />
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.text.secondary}
-                      label='Write'
-                    />
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.input.light}
-                      label='Create'
-                    />
-                  </TableCell>
-                </TableRow>
-                <TableRow sx={{ '& .MuiTableCell-root:first-of-type': { pl: '0 !important' } }}>
-                  <TableCell>Content Management</TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.text.secondary}
-                      label='Read'
-                    />
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.text.secondary}
-                      label='Write'
-                    />
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.text.secondary}
-                      label='Create'
-                    />
-                  </TableCell>
-                </TableRow>
-                <TableRow sx={{ '& .MuiTableCell-root:first-of-type': { pl: '0 !important' } }}>
-                  <TableCell>Deputes Management</TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.text.secondary}
-                      label='Read'
-                    />
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.text.secondary}
-                      label='Write'
-                    />
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.text.secondary}
-                      label='Create'
-                    />
-                  </TableCell>
-                </TableRow>
-                <TableRow sx={{ '& .MuiTableCell-root:first-of-type': { pl: '0 !important' } }}>
-                  <TableCell>Financial Management</TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.text.secondary}
-                      label='Read'
-                    />
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.text.secondary}
-                      label='Write'
-                    />
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.text.secondary}
-                      label='Create'
-                    />
-                  </TableCell>
-                </TableRow>
-                <TableRow sx={{ '& .MuiTableCell-root:first-of-type': { pl: '0 !important' } }}>
-                  <TableCell>Reporting</TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.text.secondary}
-                      label='Read'
-                    />
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.text.secondary}
-                      label='Write'
-                    />
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.text.secondary}
-                      label='Create'
-                    />
-                  </TableCell>
-                </TableRow>
-                <TableRow sx={{ '& .MuiTableCell-root:first-of-type': { pl: '0 !important' } }}>
-                  <TableCell>API Control</TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.text.secondary}
-                      label='Read'
-                    />
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.text.secondary}
-                      label='Write'
-                    />
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.text.secondary}
-                      label='Create'
-                    />
-                  </TableCell>
-                </TableRow>{' '}
-                <TableRow sx={{ '& .MuiTableCell-root:first-of-type': { pl: '0 !important' } }}>
-                  <TableCell>Repository Management</TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.text.secondary}
-                      label='Read'
-                    />
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.text.secondary}
-                      label='Write'
-                    />
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.text.secondary}
-                      label='Create'
-                    />
-                  </TableCell>
-                </TableRow>{' '}
-                <TableRow sx={{ '& .MuiTableCell-root:first-of-type': { pl: '0 !important' } }}>
-                  <TableCell>Payroll</TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.text.secondary}
-                      label='Read'
-                    />
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.text.secondary}
-                      label='Write'
-                    />
-                  </TableCell>
-                  <TableCell>
-                    {' '}
-                    <FormControlLabel
-                      sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
-                      control={<Checkbox />}
-                      color={theme => theme.palette.text.secondary}
-                      label='Create'
-                    />
-                  </TableCell>
-                </TableRow>{' '}
+                {rolesArr.map((i, index) => {
+                  const id = i.toLowerCase().split(' ').join('-')
+
+                  return (
+                    <TableRow sx={{ '& .MuiTableCell-root:first-of-type': { pl: '0 !important' } }} key={index}>
+                      <TableCell>{i}</TableCell>
+                      <TableCell>
+                        {' '}
+                        <FormControlLabel
+                          label='Read'
+                          sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
+                          control={
+                            <Checkbox
+                              id={`${id}-read`}
+                              onChange={() => togglePermission(`${id}-read`)}
+                              checked={selectedCheckbox.includes(`${id}-read`)}
+                            />
+                          }
+                        />
+                      </TableCell>
+                      <TableCell>
+                        {' '}
+                        <FormControlLabel
+                          label='Write'
+                          sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
+                          control={
+                            <Checkbox
+                              id={`${id}-write`}
+                              onChange={() => togglePermission(`${id}-write`)}
+                              checked={selectedCheckbox.includes(`${id}-write`)}
+                            />
+                          }
+                        />
+                      </TableCell>
+                      <TableCell>
+                        {' '}
+                        <FormControlLabel
+                          label='Create'
+                          sx={{ '& .MuiTypography-root': { textTransform: 'capitalize', color: 'text.secondary' } }}
+                          control={
+                            <Checkbox
+                              id={`${id}-create`}
+                              onChange={() => togglePermission(`${id}-create`)}
+                              checked={selectedCheckbox.includes(`${id}-create`)}
+                            />
+                          }
+                        />
+                      </TableCell>
+                    </TableRow>
+                  )
+                })}
               </TableBody>
             </Table>
           </TableContainer>
